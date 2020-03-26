@@ -48,7 +48,7 @@ public class sendingFragment extends Fragment {
     private String htmlContentInStringFormat;
     private static final Map<String, String> sendingSchedule_kor = new HashMap<String, String>() {{
         // Date format should be MM_dd
-        // 2019 년
+        // 2020 년
         // 1 월
         put("01_01", "마태복음 1-3, 시편 1장, 잠언 1장");
         put("01_02", "마태복음 4-6장, 시편 2장, 잠언 2장");
@@ -442,7 +442,7 @@ public class sendingFragment extends Fragment {
 
     private static final Map<String, String> sendingSchedule_eng = new HashMap<String, String>() {{
         // Date format should be MM_dd
-        // 2019 년
+        // 2020 년
         // 1 월
         put("01_01", "Matthew 1-3, Psalms 1, Proverbs 1");
         put("01_02", "Matthew 4-6, Psalms 2, Proverbs 2");

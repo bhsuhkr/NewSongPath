@@ -53,11 +53,17 @@
             <TextView
                 android:id="@+id/text_home"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:background="@color/white"
+                android:layout_height="270dp"
+                android:background="@drawable/border"
                 android:contentDescription="@string/text_editable_upcoming"
                 android:fontFamily="@font/sangsang"
-                android:paddingTop="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
                 android:scrollbars="vertical"
                 android:text="로딩중..."
                 android:textColor="@color/colorPrimary"
@@ -74,17 +80,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="5dp" />
 
-            <Button
-                android:id="@+id/track_btn"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/sangsang"
-                android:background="@drawable/writing"
-                android:text="말씀 기록하기"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="30sp" />
+<!--            <Button-->
+<!--                android:id="@+id/track_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:fontFamily="@font/sangsang"-->
+<!--                android:background="@drawable/writing"-->
+<!--                android:text="말씀 기록하기"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="#FFFFFF"-->
+<!--                android:textSize="30sp" />-->
 
             <Space
                 android:layout_width="match_parent"
