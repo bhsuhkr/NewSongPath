@@ -5,16 +5,16 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.webkit.WebView;
 import android.webkit.WebChromeClient;
+import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class JooBoActivity extends AppCompatActivity {
 
-    private WebView webView;
     private static final String url = "http://www.newsongdallas.org/tong/weekly/weekly_V2.asp?";
+    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

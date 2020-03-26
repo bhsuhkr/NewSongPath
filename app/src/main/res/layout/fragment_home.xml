@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    android:paddingTop="10dp"
     android:paddingLeft="5dp"
+    android:paddingTop="10dp"
     android:paddingRight="5dp">
 
     <ScrollView
@@ -54,16 +53,16 @@
                 android:id="@+id/text_home"
                 android:layout_width="match_parent"
                 android:layout_height="270dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="2dp"
                 android:background="@drawable/border"
                 android:contentDescription="@string/text_editable_upcoming"
                 android:fontFamily="@font/sangsang"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
                 android:paddingLeft="5dp"
+                android:paddingTop="5dp"
                 android:paddingRight="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
+                android:paddingBottom="5dp"
                 android:scrollbars="vertical"
                 android:text="로딩중..."
                 android:textColor="@color/colorPrimary"
@@ -80,17 +79,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="5dp" />
 
-<!--            <Button-->
-<!--                android:id="@+id/track_btn"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:fontFamily="@font/sangsang"-->
-<!--                android:background="@drawable/writing"-->
-<!--                android:text="말씀 기록하기"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="#FFFFFF"-->
-<!--                android:textSize="30sp" />-->
+            <Button
+                android:id="@+id/track_btn"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/writing"
+                android:fontFamily="@font/sangsang"
+                android:text="말씀 기록하기"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -173,7 +172,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_height="70dp" />
 
         </LinearLayout>
     </ScrollView>

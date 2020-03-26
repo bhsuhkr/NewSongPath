@@ -32,20 +32,8 @@ import java.util.Map;
 
 public class servingFragement extends Fragment {
 
-    private servingViewModel notificationsViewModel;
-    private TextView servingTextView;
-    private TextView servingQT_kor;
-    private String currentDate;
-    private ImageView image1;
-    private ImageView image2;
-    private ImageView image3;
-    private ImageView column;
-    private BottomNavigationView navigation;
-    private HorizontalScrollView horizontalScrollView;
-    private StringBuilder builder;
     private static final String url_kor_QT = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2603&lef=&sublef=&page=1&search_select=&search_text=";
     private static final String url_eng_QT = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2603&lef=&sublef=&page=1&search_select=&search_text=";
-    private String htmlContentInStringFormat;
     private static final Map<String, String> servingSchedule_kor = new HashMap<String, String>() {{
         // Date format should be MM_dd
         // 2020 년
@@ -439,7 +427,6 @@ public class servingFragement extends Fragment {
         put("12_30", "욥기 21-22장, 시편 126장");
         put("12_31", "욥기 23-24장, 시편 127장");
     }};
-
     private static final Map<String, String> servingSchedule_eng = new HashMap<String, String>() {{
         // Date format should be MM_dd
         // 2020 년
@@ -833,7 +820,18 @@ public class servingFragement extends Fragment {
         put("12_30", "Job 21-22, Psalms 126");
         put("12_31", "Job 23-24, Psalms 127");
     }};
-
+    private servingViewModel notificationsViewModel;
+    private TextView servingTextView;
+    private TextView servingQT_kor;
+    private String currentDate;
+    private ImageView image1;
+    private ImageView image2;
+    private ImageView image3;
+    private ImageView column;
+    private BottomNavigationView navigation;
+    private HorizontalScrollView horizontalScrollView;
+    private StringBuilder builder;
+    private String htmlContentInStringFormat;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

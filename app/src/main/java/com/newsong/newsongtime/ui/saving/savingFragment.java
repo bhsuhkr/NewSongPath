@@ -32,20 +32,8 @@ import java.util.Map;
 
 public class savingFragment extends Fragment {
 
-    private TextView savingTextView;
-    private TextView savingQT_kor;
-    private String currentDate;
-    private ImageView image1;
-    private ImageView image2;
-    private ImageView image3;
-    private BottomNavigationView navigation;
-    private HorizontalScrollView horizontalScrollView;
-    private StringBuilder builder;
     private static final String url_kor_QT = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2604&lef=&sublef=&page=1&search_select=&search_text=";
     private static final String url_eng_QT = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2604&lef=&sublef=&page=1&search_select=&search_text=";
-    private String htmlContentInStringFormat;
-    private savingViewModel savingViewModel;
-
     private static final Map<String, String> savingSchedule_kor = new HashMap<String, String>() {{
         // Date format should be MM_dd
         // 2020 년
@@ -439,7 +427,6 @@ public class savingFragment extends Fragment {
         put("12_30", "출애굽기 24장");
         put("12_31", "출애굽기 25장");
     }};
-
     private static final Map<String, String> savingSchedule_eng = new HashMap<String, String>() {{
         // Date format should be MM_dd
         // 2020 년
@@ -833,7 +820,17 @@ public class savingFragment extends Fragment {
         put("12_30", "Exodus 24");
         put("12_31", "Exodus 25");
     }};
-
+    private TextView savingTextView;
+    private TextView savingQT_kor;
+    private String currentDate;
+    private ImageView image1;
+    private ImageView image2;
+    private ImageView image3;
+    private BottomNavigationView navigation;
+    private HorizontalScrollView horizontalScrollView;
+    private StringBuilder builder;
+    private String htmlContentInStringFormat;
+    private savingViewModel savingViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

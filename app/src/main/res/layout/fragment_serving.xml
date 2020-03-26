@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="#A78972">
+    android:background="#A78972"
+    android:orientation="vertical">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
@@ -16,8 +16,8 @@
         android:theme="@style/Widget.BottomNavigationView14"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
-        app:menu="@menu/navigation_saving"
-        app:labelVisibilityMode="labeled" />
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/navigation_saving" />
 
     <TextView
         android:id="@+id/txtView_serving"
@@ -35,41 +35,41 @@
 
     <TextView
         android:id="@+id/text_serving"
-        android:text="로딩중...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
         android:layout_width="match_parent"
-        android:visibility="gone"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:contentDescription="@string/text_editable_upcoming"
         android:fontFamily="@font/sangsang"
+        android:maxLines="500"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:scrollbars="vertical"
+        android:text="로딩중...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        android:paddingRight="5dp"
-        android:paddingLeft="5dp"
-        android:maxLines="500"
-        android:scrollbars="vertical" />
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="50dp">
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/serving_column"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            android:visibility="visible"
-            android:src="@drawable/column_kor"></ImageView>
+            android:scaleType="fitXY"
+            android:src="@drawable/column_kor"
+            android:visibility="visible"></ImageView>
 
         <HorizontalScrollView
             android:id="@+id/horizontalScroll_serving"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
-            android:scrollbars="none">
+            android:scrollbars="none"
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -77,25 +77,25 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:src="@drawable/serving1_kor"
                     android:id="@+id/imageView_serving1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"></ImageView>
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/serving1_kor"></ImageView>
 
                 <ImageView
-                    android:src="@drawable/serving2_kor"
                     android:id="@+id/imageView_serving2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"></ImageView>
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/serving2_kor"></ImageView>
 
                 <ImageView
-                    android:src="@drawable/serving3_kor"
                     android:id="@+id/imageView_serving3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"></ImageView>
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/serving3_kor"></ImageView>
 
             </LinearLayout>
         </HorizontalScrollView>

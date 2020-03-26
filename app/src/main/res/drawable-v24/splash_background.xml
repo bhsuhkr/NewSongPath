@@ -2,6 +2,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     =
     <item>
-        <bitmap android:src="@drawable/newsong_splash" android:gravity="bottom|center_horizontal" />
+        <bitmap android:gravity="bottom|center_horizontal" android:src="@drawable/newsong_splash" />
     </item>
 </selector>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
@@ -16,16 +16,16 @@
         android:theme="@style/Widget.BottomNavigationView14"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
-        app:menu="@menu/navigation_saving"
-        app:labelVisibilityMode="labeled" />
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/navigation_saving" />
 
     <TextView
         android:id="@+id/txtView_sending"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:fontFamily="@font/sangsang"
         android:background="@color/colorPrimary"
+        android:fontFamily="@font/sangsang"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -36,41 +36,41 @@
 
     <TextView
         android:id="@+id/text_sending"
-        android:text="로딩중...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
         android:layout_width="match_parent"
-        android:visibility="gone"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:contentDescription="@string/text_editable_upcoming"
         android:fontFamily="@font/sangsang"
+        android:maxLines="500"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:scrollbars="vertical"
+        android:text="로딩중...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        android:paddingRight="5dp"
-        android:paddingLeft="5dp"
-        android:maxLines="500"
-        android:scrollbars="vertical" />
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="50dp">
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/sending_column"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            android:visibility="visible"
-            android:src="@drawable/column_kor"></ImageView>
+            android:scaleType="fitXY"
+            android:src="@drawable/column_kor"
+            android:visibility="visible"></ImageView>
 
         <HorizontalScrollView
             android:id="@+id/horizontalScroll_sending"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
-            android:scrollbars="none">
+            android:scrollbars="none"
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="wrap_content"

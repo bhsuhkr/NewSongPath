@@ -2,36 +2,36 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-        android:title="New Song Church에 관하여"
-        android:iconSpaceReserved="false">
+        android:iconSpaceReserved="false"
+        android:title="New Song Church에 관하여">
         <Preference
-            android:title="1부 예배"
+            android:icon="@drawable/logo"
+            android:selectable="false"
             android:summary="Sun 08:00 AM"
-            android:selectable="false"
-            android:icon="@drawable/logo" />
+            android:title="1부 예배" />
         <Preference
-            android:title="2부 예배"
+            android:icon="@drawable/logo"
+            android:selectable="false"
             android:summary="Sun 10:00 AM"
-            android:selectable="false"
-            android:icon="@drawable/logo" />
+            android:title="2부 예배" />
         <Preference
-            android:title="3부 예배"
+            android:icon="@drawable/logo"
+            android:selectable="false"
             android:summary="Sun 12:00 PM"
-            android:selectable="false"
-            android:icon="@drawable/logo" />
+            android:title="3부 예배" />
         <Preference
-            android:title="4부 예배 (청년부)"
-            android:summary="Sun 01:44 PM"
+            android:icon="@drawable/logo"
             android:selectable="false"
-            android:icon="@drawable/logo" />
+            android:summary="Sun 01:44 PM"
+            android:title="4부 예배 (청년부)" />
 
     </PreferenceCategory>
 
     <PreferenceCategory android:title="설정">
         <SwitchPreference
+            android:defaultValue="true"
             android:key="pushNotificationOnOff"
-            android:title="알림 켜기/끄기"
-            android:defaultValue="true" />
+            android:title="알림 켜기/끄기" />
 
         <!--        <Preference-->
         <!--            android:title="알림시간을 선택하세요."-->
