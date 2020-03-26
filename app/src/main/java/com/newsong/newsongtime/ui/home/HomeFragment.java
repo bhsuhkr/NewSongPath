@@ -102,14 +102,14 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        trackBtn = root.findViewById(R.id.track_btn);
-        trackBtn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), TrackActivity.class));
-            }
-        });
+//        trackBtn = root.findViewById(R.id.track_btn);
+//        trackBtn.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getContext(), TrackActivity.class));
+//            }
+//        });
 
         return root;
     }

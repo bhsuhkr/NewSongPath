@@ -48,7 +48,7 @@ public class servingFragement extends Fragment {
     private String htmlContentInStringFormat;
     private static final Map<String, String> servingSchedule_kor = new HashMap<String, String>() {{
         // Date format should be MM_dd
-        // 2019 년
+        // 2020 년
         // 1 월
         put("01_01", "마태복음 1-2장, 잠언 1장");
         put("01_02", "마태복음 3-4장, 잠언 2장");
@@ -442,7 +442,7 @@ public class servingFragement extends Fragment {
 
     private static final Map<String, String> servingSchedule_eng = new HashMap<String, String>() {{
         // Date format should be MM_dd
-        // 2019 년
+        // 2020 년
         // 1 월
         put("01_01", "Matthew 1-2, Proverbs 1");
         put("01_02", "Matthew 3-4, Proverbs 2");

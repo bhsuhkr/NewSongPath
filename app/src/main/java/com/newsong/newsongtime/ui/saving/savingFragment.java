@@ -48,7 +48,7 @@ public class savingFragment extends Fragment {
 
     private static final Map<String, String> savingSchedule_kor = new HashMap<String, String>() {{
         // Date format should be MM_dd
-        // 2019 년
+        // 2020 년
         // 1 월
         put("01_01", "잠언 1장");
         put("01_02", "잠언 2장");
@@ -442,7 +442,7 @@ public class savingFragment extends Fragment {
 
     private static final Map<String, String> savingSchedule_eng = new HashMap<String, String>() {{
         // Date format should be MM_dd
-        // 2019 년
+        // 2020 년
         // 1 월
         put("01_01", "Proverbs 1");
         put("01_02", "Proverbs 2");
