@@ -69,16 +69,16 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_saving,R.id.navigation_sending,R.id.navigation_serving, R.id.navigation_setting)
+                R.id.navigation_home, R.id.navigation_saving, R.id.navigation_sending, R.id.navigation_serving, R.id.navigation_setting)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
     }
 
-    private void createNotificationChannel(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            NotificationChannel notificationChannel = new NotificationChannel("channel1","Test", NotificationManager.IMPORTANCE_DEFAULT );
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel("channel1", "Test", NotificationManager.IMPORTANCE_DEFAULT);
             notificationChannel.setDescription("Test message");
             notificationChannel.setShowBadge(true);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 for (Element e : title) {
                     if (e.text().contains("http")) {
                         tempURL = e.text();
-                        splitYoutube = tempURL.split("=",2);
+                        splitYoutube = tempURL.split("=", 2);
                         tempID = splitYoutube[1];
                     } else {
                         builder.append(e.text()).append("\n");

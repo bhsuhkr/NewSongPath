@@ -9,7 +9,7 @@
         android:name="firebase_analytics_collection_enabled"
         android:value="false" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
@@ -36,21 +36,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.newsong.newsongtime.SermonActivity"/>
+        <activity android:name="com.newsong.newsongtime.SermonActivity" />
 
         <activity
             android:name="com.newsong.newsongtime.MainActivity"
-            android:label="@string/app_name">
-                </activity>
+            android:label="@string/app_name"></activity>
         <activity
             android:name="com.newsong.newsongtime.JooBoActivity"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name"></activity>
 
         <activity
             android:name="com.newsong.newsongtime.TrackActivity"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name"></activity>
 
         <receiver android:name="com.newsong.newsongtime.NotificationPublisher" />
         <service android:name="com.newsong.newsongtime.MyFirebaseMessagingService">

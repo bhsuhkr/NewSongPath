@@ -8,12 +8,14 @@ import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebChromeClient;
 import android.webkit.WebViewClient;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class JooBoActivity extends AppCompatActivity {
 
     private WebView webView;
     private static final String url = "http://www.newsongdallas.org/tong/weekly/weekly_V2.asp?";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
@@ -25,9 +27,9 @@ public class JooBoActivity extends AppCompatActivity {
         progressDialog.setMessage("Loading Data...");
         progressDialog.setCancelable(false);
         webView = findViewById(R.id.web_view);
-        webView.setOnTouchListener(new View.OnTouchListener(){
+        webView.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event){
+            public boolean onTouch(View v, MotionEvent event) {
                 return (event.getAction() == MotionEvent.ACTION_MOVE);
             }
         });

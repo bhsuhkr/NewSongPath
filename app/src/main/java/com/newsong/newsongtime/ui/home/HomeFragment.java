@@ -23,10 +23,12 @@ import com.newsong.newsongtime.SermonActivity;
 import com.newsong.newsongtime.TrackActivity;
 import com.squareup.picasso.Picasso;
 import com.newsong.newsongtime.R;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import java.io.IOException;
 
 public class HomeFragment extends Fragment {
@@ -66,7 +68,7 @@ public class HomeFragment extends Fragment {
         jsoupAsyncTask.execute();
 
 
-        sermonBtn  = root.findViewById(R.id.sermonBtn);
+        sermonBtn = root.findViewById(R.id.sermonBtn);
         sermonBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +76,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        homepageBtn  = root.findViewById(R.id.homepageBtn);
+        homepageBtn = root.findViewById(R.id.homepageBtn);
         homepageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +111,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-    return root;
+        return root;
     }
 
     private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
@@ -124,11 +126,11 @@ public class HomeFragment extends Fragment {
             try {
                 Document doc = Jsoup.connect(url).get();
                 Elements title = doc.select("div.sboard_cont_details > p"); //parent > child: child elements that descend directly from parent, e.g.
-                Elements imagefile = doc.select("div.sboard_cont_details img[src]") ; //parent > child: child elements that descend directly from parent, e.g.
+                Elements imagefile = doc.select("div.sboard_cont_details img[src]"); //parent > child: child elements that descend directly from parent, e.g.
                 for (Element e : title) {
                     if (e.text().contains("http")) {
                         tempURL = e.text();
-                        splitYoutube = tempURL.split("=",2);
+                        splitYoutube = tempURL.split("=", 2);
                         tempID = splitYoutube[1];
                     } else {
                         builder.append(e.text()).append("\n");

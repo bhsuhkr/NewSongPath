@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class TrackActivity extends AppCompatActivity {
 
-    String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry",
-            "WebOS","Ubuntu","Windows7","Max OS X"};
+    String[] mobileArray = {"Android", "IPhone", "WindowsMobile", "Blackberry",
+            "WebOS", "Ubuntu", "Windows7", "Max OS X"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

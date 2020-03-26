@@ -2,17 +2,18 @@ package com.newsong.newsongtime;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class newsongSplashActivity extends AppCompatActivity {
 
     @Override
-        protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        try{
+        try {
             Thread.sleep(800);
-        } catch (InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
         startActivity(new Intent(this, MainActivity.class));

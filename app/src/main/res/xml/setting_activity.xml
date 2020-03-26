@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         android:title="New Song Church에 관하여"
@@ -9,40 +8,36 @@
             android:title="1부 예배"
             android:summary="Sun 08:00 AM"
             android:selectable="false"
-            android:icon="@drawable/logo"
-            />
+            android:icon="@drawable/logo" />
         <Preference
             android:title="2부 예배"
             android:summary="Sun 10:00 AM"
             android:selectable="false"
-            android:icon="@drawable/logo"/>
+            android:icon="@drawable/logo" />
         <Preference
             android:title="3부 예배"
             android:summary="Sun 12:00 PM"
             android:selectable="false"
-            android:icon="@drawable/logo"/>
+            android:icon="@drawable/logo" />
         <Preference
             android:title="4부 예배 (청년부)"
             android:summary="Sun 01:44 PM"
             android:selectable="false"
-            android:icon="@drawable/logo"/>
+            android:icon="@drawable/logo" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="설정"
-        >
+    <PreferenceCategory android:title="설정">
         <SwitchPreference
             android:key="pushNotificationOnOff"
             android:title="알림 켜기/끄기"
-            android:defaultValue="true"
-            />
+            android:defaultValue="true" />
 
-<!--        <Preference-->
-<!--            android:title="알림시간을 선택하세요."-->
-<!--            android:key="timePreference"-->
-<!--            android:icon="@drawable/clock"-->
-<!--            />-->
+        <!--        <Preference-->
+        <!--            android:title="알림시간을 선택하세요."-->
+        <!--            android:key="timePreference"-->
+        <!--            android:icon="@drawable/clock"-->
+        <!--            />-->
     </PreferenceCategory>
 
 </PreferenceScreen>
