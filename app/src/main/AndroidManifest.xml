@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.newsong.newsongtime">
+
+    <meta-data
+        android:name="firebase_messaging_auto_init_enabled"
+        android:value="false" />
+    <meta-data
+        android:name="firebase_analytics_collection_enabled"
+        android:value="false" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:largeHeap="true"
+        android:hardwareAccelerated="false"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name="com.newsong.newsongtime.newsongSplashActivity"
+            android:label="@string/app_name"
+            android:theme="@style/SplashThemeCommon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.newsong.newsongtime.SermonActivity"/>
+
+        <activity
+            android:name="com.newsong.newsongtime.MainActivity"
+            android:label="@string/app_name">
+                </activity>
+        <activity
+            android:name="com.newsong.newsongtime.JooBoActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name="com.newsong.newsongtime.TrackActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <receiver android:name="com.newsong.newsongtime.NotificationPublisher" />
+        <service android:name="com.newsong.newsongtime.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

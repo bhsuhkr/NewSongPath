@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">New Song Path</string>
+    <string name="title_home">Home</string>
+    <string name="title_saving">Saving</string>
+    <string name="title_serving">Serving</string>
+    <string name="title_sending">Sending</string>
+    <string name="title_setting">Setting</string>
+    <string name="text_editable_upcoming">upcoming</string>
+    <string name="text_upcoming">Upcoming Ministries</string>
+    <string name="pic_editableUpcoming">PIC</string>
+    <string name="remind_button">remind</string>
+    <string name="overlay_button">ok</string>
+    <string name="instructions">Click on UNLOCK button to unlock the screen</string>
+    <string name="unlock">UNLOCK</string>
+    <string name="home_ministry">공지</string>
+    <string name="error">관리자에게 문의해주세요</string>
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <string name="player_error">Error initializing YouTube player: %s</string>
+    <string name="seek_to">Jump To</string>
+    <string name="seek_to_hint">Seconds</string>
+    <string name="parsingImage">parsingImage</string>
+    <string name="sermon">설교</string>
+    <string name="bulletin">주보</string>
+    <string name="homepage">홈페이지</string>
+    <string name="outreach">지역사회</string>
+
+</resources>

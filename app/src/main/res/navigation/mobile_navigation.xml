@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.newsong.newsongtime.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_saving"
+        android:name="com.newsong.newsongtime.ui.saving.savingFragment"
+        android:label="@string/title_saving"
+        tools:layout="@layout/fragment_saving" />
+
+    <fragment
+        android:id="@+id/navigation_serving"
+        android:name="com.newsong.newsongtime.ui.serving.servingFragement"
+        android:label="@string/title_serving"
+        tools:layout="@layout/fragment_serving" />
+
+
+    <fragment
+        android:id="@+id/navigation_sending"
+        android:name="com.newsong.newsongtime.ui.sending.sendingFragment"
+        android:label="@string/title_sending"
+        tools:layout="@layout/fragment_sending" />
+
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.newsong.newsongtime.ui.dashboard.DashboardFragment"
+        android:label="@string/title_setting"
+        tools:layout="@layout/fragment_setting" />
+</navigation>
