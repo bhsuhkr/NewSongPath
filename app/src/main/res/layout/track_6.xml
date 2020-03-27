@@ -11,7 +11,7 @@
         android:layout_marginTop="30dp"
         android:fontFamily="@font/sangsang"
         android:gravity="center"
-        android:text="1월"
+        android:text="6월"
         android:textColor="@color/colorPrimary"
         android:textSize="50sp"
         android:textStyle="bold" />
@@ -128,6 +128,7 @@
         android:layout_marginBottom="2dp"
         android:background="@android:color/darker_gray" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -138,29 +139,12 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+
             <View
                 android:layout_width="0px"
                 android:layout_height="50dp"
+                android:layout_marginTop="7dp"
                 android:layout_marginLeft="7dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginRight="7dp"
-                android:layout_weight="1"
-                android:background="@android:color/darker_gray"
-                android:backgroundTint="?android:colorBackground" />
-
-            <View
-                android:layout_width="0px"
-                android:layout_height="50dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginRight="7dp"
-                android:layout_weight="1"
-                android:background="@android:color/darker_gray"
-                android:backgroundTint="?android:colorBackground" />
-
-            <View
-                android:layout_width="0px"
-                android:layout_height="50dp"
-                android:layout_marginTop="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@android:color/darker_gray"
@@ -238,18 +222,10 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <TextView
                 android:id="@+id/day_5"
                 android:layout_width="0px"
                 android:layout_height="50dp"
-                android:layout_marginLeft="7dp"
                 android:layout_marginTop="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
@@ -282,11 +258,19 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/day_7"
                 android:layout_width="0px"
                 android:layout_height="50dp"
                 android:layout_marginTop="7dp"
+                android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@android:color/darker_gray"
@@ -299,7 +283,6 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="25sp"
                 android:textStyle="bold" />
-
 
             <TextView
                 android:id="@+id/day_8"
@@ -373,18 +356,10 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <TextView
                 android:id="@+id/day_12"
                 android:layout_width="0px"
                 android:layout_height="50dp"
-                android:layout_marginLeft="7dp"
                 android:layout_marginTop="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
@@ -417,11 +392,19 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/day_14"
                 android:layout_width="0px"
                 android:layout_height="50dp"
                 android:layout_marginTop="7dp"
+                android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@android:color/darker_gray"
@@ -434,7 +417,6 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="25sp"
                 android:textStyle="bold" />
-
 
             <TextView
                 android:id="@+id/day_15"
@@ -508,18 +490,10 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <TextView
                 android:id="@+id/day_19"
                 android:layout_width="0px"
                 android:layout_height="50dp"
-                android:layout_marginLeft="7dp"
                 android:layout_marginTop="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
@@ -552,11 +526,19 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/day_21"
                 android:layout_width="0px"
                 android:layout_height="50dp"
                 android:layout_marginTop="7dp"
+                android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@android:color/darker_gray"
@@ -642,18 +624,10 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <TextView
                 android:id="@+id/day_26"
                 android:layout_width="0px"
                 android:layout_height="50dp"
-                android:layout_marginLeft="7dp"
                 android:layout_marginTop="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
@@ -686,12 +660,19 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/day_28"
                 android:layout_width="0px"
                 android:layout_height="50dp"
                 android:layout_marginTop="7dp"
+                android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@android:color/darker_gray"
@@ -741,23 +722,32 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/day_31"
+            <View
                 android:layout_width="0px"
                 android:layout_height="50dp"
                 android:layout_marginTop="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@android:color/darker_gray"
-                android:clickable="true"
-                android:fontFamily="@font/sangsang"
-                android:gravity="center"
-                android:onClick="isClicked"
-                android:tag="31"
-                android:text="31"
-                android:textColor="@color/colorPrimary"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:backgroundTint="?android:colorBackground" />
+
+            <View
+                android:layout_width="0px"
+                android:layout_height="50dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:background="@android:color/darker_gray"
+                android:backgroundTint="?android:colorBackground" />
+
+            <View
+                android:layout_width="0px"
+                android:layout_height="50dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:background="@android:color/darker_gray"
+                android:backgroundTint="?android:colorBackground" />
 
             <View
                 android:layout_width="0px"
@@ -769,6 +759,7 @@
                 android:backgroundTint="?android:colorBackground" />
 
         </LinearLayout>
+
 
     </LinearLayout>
 

@@ -2,6 +2,7 @@ package com.newsong.newsongtime;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;

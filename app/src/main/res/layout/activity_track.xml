@@ -9,6 +9,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/sangsang"
         android:text="말씀 기록하기"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
         android:textColor="@color/colorPrimary"
         android:textSize="25sp"
         android:textStyle="bold" />
@@ -31,7 +33,6 @@
             android:layout_height="0dp"
             android:orientation="vertical">
 
-
             <TextView
                 android:id="@+id/track_1"
                 android:layout_width="fill_parent"
@@ -43,6 +44,12 @@
                 android:text="1월"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <View
                 android:layout_width="match_parent"
@@ -62,6 +69,12 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -80,6 +93,12 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
+            <ProgressBar
+                android:id="@+id/progressBar3"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -96,6 +115,12 @@
                 android:text="4월"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar4"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <View
                 android:layout_width="match_parent"
@@ -114,6 +139,12 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
+            <ProgressBar
+                android:id="@+id/progressBar5"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -130,6 +161,12 @@
                 android:text="6월"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar6"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <View
                 android:layout_width="match_parent"
@@ -148,6 +185,12 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
+            <ProgressBar
+                android:id="@+id/progressBar7"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -164,6 +207,12 @@
                 android:text="8월"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar8"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <View
                 android:layout_width="match_parent"
@@ -182,6 +231,12 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
+            <ProgressBar
+                android:id="@+id/progressBar9"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -198,6 +253,12 @@
                 android:text="10월"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar10"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <View
                 android:layout_width="match_parent"
@@ -216,6 +277,12 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
+            <ProgressBar
+                android:id="@+id/progressBar11"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -232,6 +299,12 @@
                 android:text="12월"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar12"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <View
                 android:layout_width="match_parent"

@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Track1 extends AppCompatActivity {
+public class Track2 extends AppCompatActivity {
 
     public static Map<String, Boolean> check = new HashMap<String, Boolean>() {{
         put("1", false);
@@ -49,8 +49,6 @@ public class Track1 extends AppCompatActivity {
         put("27", false);
         put("28", false);
         put("29", false);
-        put("30", false);
-        put("31", false);
     }};
 
     private static final Map<String, Integer> id_list = new HashMap<String, Integer>() {{
@@ -83,8 +81,6 @@ public class Track1 extends AppCompatActivity {
         put("27", R.id.day_27);
         put("28", R.id.day_28);
         put("29", R.id.day_29);
-        put("30", R.id.day_30);
-        put("31", R.id.day_31);
     }};
 
 
@@ -93,11 +89,11 @@ public class Track1 extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.track_1);
+        setContentView(R.layout.track_2);
 
         loadMap();
 
-        for (int i = 1; i <= 31; i++) {
+        for (int i = 1; i <= 29; i++) {
             TextView current = findViewById(id_list.get(Integer.toString(i)));
 
             if (check.get(Integer.toString(i))) {
@@ -126,22 +122,22 @@ public class Track1 extends AppCompatActivity {
     }
 
     public void saveMap(Map<String, Boolean> inputMap) {
-        SharedPreferences pSharedPref = getApplicationContext().getSharedPreferences("progress_1", Context.MODE_PRIVATE);
+        SharedPreferences pSharedPref = getApplicationContext().getSharedPreferences("progress_2", Context.MODE_PRIVATE);
         if (pSharedPref != null) {
             JSONObject jsonObject = new JSONObject(inputMap);
             String jsonString = jsonObject.toString();
             SharedPreferences.Editor editor = pSharedPref.edit();
-            editor.remove("Track_1").commit();
-            editor.putString("Track_1", jsonString);
+            editor.remove("Track_2").commit();
+            editor.putString("Track_2", jsonString);
             editor.commit();
         }
     }
 
     public Map<String, Boolean> loadMap() {
-        SharedPreferences pSharedPref = getApplicationContext().getSharedPreferences("progress_1", Context.MODE_PRIVATE);
+        SharedPreferences pSharedPref = getApplicationContext().getSharedPreferences("progress_2", Context.MODE_PRIVATE);
         try {
             if (pSharedPref != null) {
-                String jsonString = pSharedPref.getString("Track_1", (new JSONObject()).toString());
+                String jsonString = pSharedPref.getString("Track_2", (new JSONObject()).toString());
                 JSONObject jsonObject = new JSONObject(jsonString);
                 Iterator<String> keysItr = jsonObject.keys();
                 while (keysItr.hasNext()) {

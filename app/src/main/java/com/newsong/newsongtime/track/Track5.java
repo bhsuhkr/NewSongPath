@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Track1 extends AppCompatActivity {
+public class Track5 extends AppCompatActivity {
 
     public static Map<String, Boolean> check = new HashMap<String, Boolean>() {{
         put("1", false);
@@ -93,7 +93,7 @@ public class Track1 extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.track_1);
+        setContentView(R.layout.track_5);
 
         loadMap();
 
@@ -126,22 +126,22 @@ public class Track1 extends AppCompatActivity {
     }
 
     public void saveMap(Map<String, Boolean> inputMap) {
-        SharedPreferences pSharedPref = getApplicationContext().getSharedPreferences("progress_1", Context.MODE_PRIVATE);
+        SharedPreferences pSharedPref = getApplicationContext().getSharedPreferences("progress_5", Context.MODE_PRIVATE);
         if (pSharedPref != null) {
             JSONObject jsonObject = new JSONObject(inputMap);
             String jsonString = jsonObject.toString();
             SharedPreferences.Editor editor = pSharedPref.edit();
-            editor.remove("Track_1").commit();
-            editor.putString("Track_1", jsonString);
+            editor.remove("Track_5").commit();
+            editor.putString("Track_5", jsonString);
             editor.commit();
         }
     }
 
     public Map<String, Boolean> loadMap() {
-        SharedPreferences pSharedPref = getApplicationContext().getSharedPreferences("progress_1", Context.MODE_PRIVATE);
+        SharedPreferences pSharedPref = getApplicationContext().getSharedPreferences("progress_5", Context.MODE_PRIVATE);
         try {
             if (pSharedPref != null) {
-                String jsonString = pSharedPref.getString("Track_1", (new JSONObject()).toString());
+                String jsonString = pSharedPref.getString("Track_5", (new JSONObject()).toString());
                 JSONObject jsonObject = new JSONObject(jsonString);
                 Iterator<String> keysItr = jsonObject.keys();
                 while (keysItr.hasNext()) {
