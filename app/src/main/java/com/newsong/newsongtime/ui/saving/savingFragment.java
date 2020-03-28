@@ -1,5 +1,7 @@
 package com.newsong.newsongtime.ui.saving;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,6 +21,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.newsong.newsongtime.R;
 
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -27,6 +31,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 
@@ -820,6 +825,7 @@ public class savingFragment extends Fragment {
         put("12_30", "Exodus 24");
         put("12_31", "Exodus 25");
     }};
+    Map<String, Boolean> check = new HashMap<String, Boolean>();
     private TextView savingTextView;
     private TextView savingQT_kor;
     private String currentDate;
@@ -836,21 +842,25 @@ public class savingFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         savingViewModel = ViewModelProviders.of(this).get(savingViewModel.class);
         View root = inflater.inflate(R.layout.fragment_saving, container, false);
-//        final TextView textView = root.findViewById(R.id.text_saving);
-//        notificationsViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
-        // Get current time (format: MM_dd)
+
         currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
 
+        savingTextView = root.findViewById(R.id.txtView_saving);
+        savingTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] current = currentDate.split("_");
+                loadMap(check, current[0]);
+                check.put(current[1], true);
+                saveMap(check, current[0]);
+                Toast.makeText(getContext(), "저장되었습니다", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         try {
-            savingTextView = root.findViewById(R.id.txtView_saving);
             savingTextView.setText(savingSchedule_kor.get(currentDate));
         } catch (Exception e) {
-//            Toast.makeText(this, "관리자에게 문의해주세요.", Toast.LENGTH_SHORT).show();
+
         }
 
         image1 = root.findViewById(R.id.imageView_saving1);
@@ -905,13 +915,6 @@ public class savingFragment extends Fragment {
                             savingTextView.setText("관리자에게 문의해주세요.");
                         }
                         return true;
-//                    case R.id.menu_english_QT:
-////                        Saving.JsoupAsyncTask jsoupAsyncTask2 = new Saving.JsoupAsyncTask();
-////                        jsoupAsyncTask2.execute();
-//
-//                        horizontalScrollView.setVisibility(View.GONE);
-//                        savingQT_kor.setVisibility(View.VISIBLE);
-//                        return true;
                 }
                 return false;
             }
@@ -919,6 +922,37 @@ public class savingFragment extends Fragment {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         return root;
+    }
+
+    public Map<String, Boolean> loadMap(Map<String, Boolean> check, String month) {
+        SharedPreferences pSharedPref = getContext().getSharedPreferences("progress_" + month, Context.MODE_PRIVATE);
+        try {
+            if (pSharedPref != null) {
+                String jsonString = pSharedPref.getString("Track_" + month, (new JSONObject()).toString());
+                JSONObject jsonObject = new JSONObject(jsonString);
+                Iterator<String> keysItr = jsonObject.keys();
+                while (keysItr.hasNext()) {
+                    String key = keysItr.next();
+                    Boolean value = (Boolean) jsonObject.get(key);
+                    check.put(key, value);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
+
+    public void saveMap(Map<String, Boolean> inputMap, String month) {
+        SharedPreferences pSharedPref = getContext().getSharedPreferences("progress_" + month, Context.MODE_PRIVATE);
+        if (pSharedPref != null) {
+            JSONObject jsonObject = new JSONObject(inputMap);
+            String jsonString = jsonObject.toString();
+            SharedPreferences.Editor editor = pSharedPref.edit();
+            editor.remove("Track_" + month).commit();
+            editor.putString("Track_" + month, jsonString);
+            editor.commit();
+        }
     }
 
     private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {

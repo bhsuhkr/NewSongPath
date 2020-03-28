@@ -12,18 +12,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.newsong.newsongtime.track.Track1;
+import com.newsong.newsongtime.track.Track01;
+import com.newsong.newsongtime.track.Track02;
+import com.newsong.newsongtime.track.Track03;
+import com.newsong.newsongtime.track.Track04;
+import com.newsong.newsongtime.track.Track05;
+import com.newsong.newsongtime.track.Track06;
+import com.newsong.newsongtime.track.Track07;
+import com.newsong.newsongtime.track.Track08;
+import com.newsong.newsongtime.track.Track09;
 import com.newsong.newsongtime.track.Track10;
 import com.newsong.newsongtime.track.Track11;
 import com.newsong.newsongtime.track.Track12;
-import com.newsong.newsongtime.track.Track2;
-import com.newsong.newsongtime.track.Track3;
-import com.newsong.newsongtime.track.Track4;
-import com.newsong.newsongtime.track.Track5;
-import com.newsong.newsongtime.track.Track6;
-import com.newsong.newsongtime.track.Track7;
-import com.newsong.newsongtime.track.Track8;
-import com.newsong.newsongtime.track.Track9;
 
 import org.json.JSONObject;
 
@@ -82,63 +82,63 @@ public class TrackActivity extends AppCompatActivity {
         tract1 = findViewById(R.id.track_1);
         tract1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), Track1.class));
+                startActivity(new Intent(getBaseContext(), Track01.class));
             }
         });
 
         tract2 = findViewById(R.id.track_2);
         tract2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), Track2.class));
+                startActivity(new Intent(getBaseContext(), Track02.class));
             }
         });
 
         tract3 = findViewById(R.id.track_3);
         tract3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), Track3.class));
+                startActivity(new Intent(getBaseContext(), Track03.class));
             }
         });
 
         tract4 = findViewById(R.id.track_4);
         tract4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), Track4.class));
+                startActivity(new Intent(getBaseContext(), Track04.class));
             }
         });
 
         tract5 = findViewById(R.id.track_5);
         tract5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), Track5.class));
+                startActivity(new Intent(getBaseContext(), Track05.class));
             }
         });
 
         tract6 = findViewById(R.id.track_6);
         tract6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), Track6.class));
+                startActivity(new Intent(getBaseContext(), Track06.class));
             }
         });
 
         tract7 = findViewById(R.id.track_7);
         tract7.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), Track7.class));
+                startActivity(new Intent(getBaseContext(), Track07.class));
             }
         });
 
         tract8 = findViewById(R.id.track_8);
         tract8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), Track8.class));
+                startActivity(new Intent(getBaseContext(), Track08.class));
             }
         });
 
         tract9 = findViewById(R.id.track_9);
         tract9.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), Track9.class));
+                startActivity(new Intent(getBaseContext(), Track09.class));
             }
         });
 
@@ -164,10 +164,16 @@ public class TrackActivity extends AppCompatActivity {
         });
 
 
-        loadMap(check_1, "1");
+
+
+        loadMap(check_1, "01");
         int count1 = 0;
         for (int i = 1; i <= check_1.size(); i++) {
-            if (check_1.get(Integer.toString(i))) count1++;
+            try{
+                if (check_1.get(Integer.toString(i))) count1++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar1 = findViewById(R.id.progressBar1);
@@ -175,10 +181,14 @@ public class TrackActivity extends AppCompatActivity {
         progressBar1.setProgress(count1);
         progressBar1.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_2, "2");
+        loadMap(check_2, "02");
         int count2 = 0;
         for (int i = 1; i <= check_2.size(); i++) {
-            if (check_2.get(Integer.toString(i))) count2++;
+            try{
+                if (check_2.get(Integer.toString(i))) count2++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar2 = findViewById(R.id.progressBar2);
@@ -186,10 +196,14 @@ public class TrackActivity extends AppCompatActivity {
         progressBar2.setProgress(count2);
         progressBar2.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_3, "3");
+        loadMap(check_3, "03");
         int count3 = 0;
         for (int i = 1; i <= check_3.size(); i++) {
-            if (check_3.get(Integer.toString(i))) count3++;
+            try{
+                if (check_3.get(Integer.toString(i))) count3++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar3 = findViewById(R.id.progressBar3);
@@ -197,10 +211,14 @@ public class TrackActivity extends AppCompatActivity {
         progressBar3.setProgress(count3);
         progressBar3.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_4, "4");
+        loadMap(check_4, "04");
         int count4 = 0;
         for (int i = 1; i <= check_4.size(); i++) {
-            if (check_4.get(Integer.toString(i))) count4++;
+            try{
+                if (check_4.get(Integer.toString(i))) count4++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar4 = findViewById(R.id.progressBar4);
@@ -208,10 +226,14 @@ public class TrackActivity extends AppCompatActivity {
         progressBar4.setProgress(count4);
         progressBar4.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_5, "5");
+        loadMap(check_5, "05");
         int count5 = 0;
         for (int i = 1; i <= check_5.size(); i++) {
-            if (check_5.get(Integer.toString(i))) count5++;
+            try{
+                if (check_5.get(Integer.toString(i))) count5++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar5 = findViewById(R.id.progressBar5);
@@ -219,10 +241,14 @@ public class TrackActivity extends AppCompatActivity {
         progressBar5.setProgress(count5);
         progressBar5.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_6, "6");
+        loadMap(check_6, "06");
         int count6 = 0;
         for (int i = 1; i <= check_6.size(); i++) {
-            if (check_6.get(Integer.toString(i))) count6++;
+            try{
+                if (check_6.get(Integer.toString(i))) count6++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar6 = findViewById(R.id.progressBar6);
@@ -230,10 +256,14 @@ public class TrackActivity extends AppCompatActivity {
         progressBar6.setProgress(count6);
         progressBar6.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_7, "7");
+        loadMap(check_7, "07");
         int count7 = 0;
         for (int i = 1; i <= check_7.size(); i++) {
-            if (check_7.get(Integer.toString(i))) count7++;
+            try{
+                if (check_7.get(Integer.toString(i))) count7++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar7 = findViewById(R.id.progressBar7);
@@ -241,10 +271,14 @@ public class TrackActivity extends AppCompatActivity {
         progressBar7.setProgress(count7);
         progressBar7.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_8, "8");
+        loadMap(check_8, "08");
         int count8 = 0;
         for (int i = 1; i <= check_8.size(); i++) {
-            if (check_8.get(Integer.toString(i))) count8++;
+            try{
+                if (check_8.get(Integer.toString(i))) count8++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar8 = findViewById(R.id.progressBar8);
@@ -252,10 +286,14 @@ public class TrackActivity extends AppCompatActivity {
         progressBar8.setProgress(count8);
         progressBar8.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_9, "9");
+        loadMap(check_9, "09");
         int count9 = 0;
         for (int i = 1; i <= check_9.size(); i++) {
-            if (check_9.get(Integer.toString(i))) count9++;
+            try{
+                if (check_9.get(Integer.toString(i))) count9++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar9 = findViewById(R.id.progressBar9);
@@ -266,7 +304,11 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_10, "10");
         int count10 = 0;
         for (int i = 1; i <= check_10.size(); i++) {
-            if (check_10.get(Integer.toString(i))) count10++;
+            try{
+                if (check_10.get(Integer.toString(i))) count10++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar10 = findViewById(R.id.progressBar10);
@@ -277,7 +319,11 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_11, "11");
         int count11 = 0;
         for (int i = 1; i <= check_11.size(); i++) {
-            if (check_11.get(Integer.toString(i))) count11++;
+            try{
+                if (check_11.get(Integer.toString(i))) count11++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar11 = findViewById(R.id.progressBar11);
@@ -288,7 +334,11 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_12, "12");
         int count12 = 0;
         for (int i = 1; i <= check_12.size(); i++) {
-            if (check_12.get(Integer.toString(i))) count12++;
+            try{
+                if (check_12.get(Integer.toString(i))) count12++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar12 = findViewById(R.id.progressBar12);
@@ -301,90 +351,126 @@ public class TrackActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
 
-        loadMap(check_1, "1");
+        loadMap(check_1, "01");
         int count1 = 0;
         for (int i = 1; i <= check_1.size(); i++) {
-            if (check_1.get(Integer.toString(i))) count1++;
+            try{
+                if (check_1.get(Integer.toString(i))) count1++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar1.setMax(31);
         progressBar1.setProgress(count1);
         progressBar1.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_2, "2");
+        loadMap(check_2, "02");
         int count2 = 0;
         for (int i = 1; i <= check_2.size(); i++) {
-            if (check_2.get(Integer.toString(i))) count2++;
+            try{
+                if (check_2.get(Integer.toString(i))) count2++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar2.setMax(29);
         progressBar2.setProgress(count2);
         progressBar2.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_3, "3");
+        loadMap(check_3, "03");
         int count3 = 0;
         for (int i = 1; i <= check_3.size(); i++) {
-            if (check_3.get(Integer.toString(i))) count3++;
+            try{
+                if (check_3.get(Integer.toString(i))) count3++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar3.setMax(31);
         progressBar3.setProgress(count3);
         progressBar3.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_4, "4");
+        loadMap(check_4, "04");
         int count4 = 0;
         for (int i = 1; i <= check_4.size(); i++) {
-            if (check_4.get(Integer.toString(i))) count4++;
+            try{
+                if (check_4.get(Integer.toString(i))) count4++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar4.setMax(30);
         progressBar4.setProgress(count4);
         progressBar4.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_5, "5");
+        loadMap(check_5, "05");
         int count5 = 0;
         for (int i = 1; i <= check_5.size(); i++) {
-            if (check_5.get(Integer.toString(i))) count5++;
+            try{
+                if (check_5.get(Integer.toString(i))) count5++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar5.setMax(31);
         progressBar5.setProgress(count5);
         progressBar5.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_6, "6");
+        loadMap(check_6, "06");
         int count6 = 0;
         for (int i = 1; i <= check_6.size(); i++) {
-            if (check_6.get(Integer.toString(i))) count6++;
+            try{
+                if (check_6.get(Integer.toString(i))) count6++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar6.setMax(30);
         progressBar6.setProgress(count6);
         progressBar6.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_7, "7");
+        loadMap(check_7, "07");
         int count7 = 0;
         for (int i = 1; i <= check_7.size(); i++) {
-            if (check_7.get(Integer.toString(i))) count7++;
+            try{
+                if (check_7.get(Integer.toString(i))) count7++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar7.setMax(31);
         progressBar7.setProgress(count7);
         progressBar7.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_8, "8");
+        loadMap(check_8, "08");
         int count8 = 0;
         for (int i = 1; i <= check_8.size(); i++) {
-            if (check_8.get(Integer.toString(i))) count8++;
+            try{
+                if (check_8.get(Integer.toString(i))) count8++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar8.setMax(31);
         progressBar8.setProgress(count8);
         progressBar8.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
-        loadMap(check_9, "9");
+        loadMap(check_9, "09");
         int count9 = 0;
         for (int i = 1; i <= check_9.size(); i++) {
-            if (check_9.get(Integer.toString(i))) count9++;
+            try{
+                if (check_9.get(Integer.toString(i))) count9++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar9.setMax(30);
@@ -394,7 +480,11 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_10, "10");
         int count10 = 0;
         for (int i = 1; i <= check_10.size(); i++) {
-            if (check_10.get(Integer.toString(i))) count10++;
+            try{
+                if (check_10.get(Integer.toString(i))) count10++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar10.setMax(31);
@@ -404,7 +494,11 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_11, "11");
         int count11 = 0;
         for (int i = 1; i <= check_11.size(); i++) {
-            if (check_11.get(Integer.toString(i))) count11++;
+            try{
+                if (check_11.get(Integer.toString(i))) count11++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar11.setMax(30);
@@ -414,7 +508,11 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_12, "12");
         int count12 = 0;
         for (int i = 1; i <= check_12.size(); i++) {
-            if (check_12.get(Integer.toString(i))) count12++;
+            try{
+                if (check_12.get(Integer.toString(i))) count12++;
+            }catch (Exception e){
+
+            }
         }
 
         progressBar12.setMax(31);

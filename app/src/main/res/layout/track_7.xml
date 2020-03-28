@@ -143,8 +143,8 @@
             <View
                 android:layout_width="0px"
                 android:layout_height="50dp"
-                android:layout_marginTop="7dp"
                 android:layout_marginLeft="7dp"
+                android:layout_marginTop="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@android:color/darker_gray"
@@ -251,8 +251,8 @@
                 android:id="@+id/day_5"
                 android:layout_width="0px"
                 android:layout_height="50dp"
-                android:layout_marginTop="7dp"
                 android:layout_marginLeft="7dp"
+                android:layout_marginTop="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@android:color/darker_gray"
@@ -385,8 +385,8 @@
                 android:id="@+id/day_12"
                 android:layout_width="0px"
                 android:layout_height="50dp"
-                android:layout_marginTop="7dp"
                 android:layout_marginLeft="7dp"
+                android:layout_marginTop="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@android:color/darker_gray"
@@ -417,7 +417,6 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="25sp"
                 android:textStyle="bold" />
-
 
 
             <TextView
@@ -521,8 +520,8 @@
                 android:id="@+id/day_19"
                 android:layout_width="0px"
                 android:layout_height="50dp"
-                android:layout_marginTop="7dp"
                 android:layout_marginLeft="7dp"
+                android:layout_marginTop="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@android:color/darker_gray"
@@ -553,7 +552,6 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="25sp"
                 android:textStyle="bold" />
-
 
 
             <TextView
@@ -657,8 +655,8 @@
                 android:id="@+id/day_26"
                 android:layout_width="0px"
                 android:layout_height="50dp"
-                android:layout_marginTop="7dp"
                 android:layout_marginLeft="7dp"
+                android:layout_marginTop="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@android:color/darker_gray"

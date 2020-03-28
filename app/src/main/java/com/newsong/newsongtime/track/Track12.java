@@ -19,40 +19,6 @@ import java.util.Map;
 
 public class Track12 extends AppCompatActivity {
 
-    public static Map<String, Boolean> check = new HashMap<String, Boolean>() {{
-        put("1", false);
-        put("2", false);
-        put("3", false);
-        put("4", false);
-        put("5", false);
-        put("6", false);
-        put("7", false);
-        put("8", false);
-        put("9", false);
-        put("10", false);
-        put("11", false);
-        put("12", false);
-        put("13", false);
-        put("14", false);
-        put("15", false);
-        put("16", false);
-        put("17", false);
-        put("18", false);
-        put("19", false);
-        put("20", false);
-        put("21", false);
-        put("22", false);
-        put("23", false);
-        put("24", false);
-        put("25", false);
-        put("26", false);
-        put("27", false);
-        put("28", false);
-        put("29", false);
-        put("30", false);
-        put("31", false);
-    }};
-
     private static final Map<String, Integer> id_list = new HashMap<String, Integer>() {{
         put("1", R.id.day_1);
         put("2", R.id.day_2);
@@ -86,7 +52,39 @@ public class Track12 extends AppCompatActivity {
         put("30", R.id.day_30);
         put("31", R.id.day_31);
     }};
-
+    public static Map<String, Boolean> check = new HashMap<String, Boolean>() {{
+        put("1", false);
+        put("2", false);
+        put("3", false);
+        put("4", false);
+        put("5", false);
+        put("6", false);
+        put("7", false);
+        put("8", false);
+        put("9", false);
+        put("10", false);
+        put("11", false);
+        put("12", false);
+        put("13", false);
+        put("14", false);
+        put("15", false);
+        put("16", false);
+        put("17", false);
+        put("18", false);
+        put("19", false);
+        put("20", false);
+        put("21", false);
+        put("22", false);
+        put("23", false);
+        put("24", false);
+        put("25", false);
+        put("26", false);
+        put("27", false);
+        put("28", false);
+        put("29", false);
+        put("30", false);
+        put("31", false);
+    }};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +152,18 @@ public class Track12 extends AppCompatActivity {
             e.printStackTrace();
         }
         return check;
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        saveMap(check);
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        saveMap(check);
     }
 
 }
