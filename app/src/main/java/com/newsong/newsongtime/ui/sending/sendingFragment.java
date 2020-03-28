@@ -18,6 +18,11 @@ import androidx.lifecycle.ViewModelProviders;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.newsong.newsongtime.R;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,27 +30,10 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 public class sendingFragment extends Fragment {
 
-    private sendingViewModel sendingViewModel;
-    private TextView sendingTextView;
-    private TextView sendingQT_kor;
-    private String currentDate;
-    private ImageView image1;
-    private ImageView image2;
-    private ImageView image3;
-    private ImageView column;
-    private BottomNavigationView navigation;
-    private HorizontalScrollView horizontalScrollView;
-    private StringBuilder builder;
     private static final String url_kor_QT = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2602&lef=&sublef=&page=1&search_select=&search_text=";
     private static final String url_eng_QT = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2602&lef=&sublef=&page=1&search_select=&search_text=";
-    private String htmlContentInStringFormat;
     private static final Map<String, String> sendingSchedule_kor = new HashMap<String, String>() {{
         // Date format should be MM_dd
         // 2020 년
@@ -439,7 +427,6 @@ public class sendingFragment extends Fragment {
         put("12_30", "말라기 1-2장, 시편 65장, 잠언 30장");
         put("12_31", "말라기 3-4장, 시편 66장, 잠언 31장");
     }};
-
     private static final Map<String, String> sendingSchedule_eng = new HashMap<String, String>() {{
         // Date format should be MM_dd
         // 2020 년
@@ -833,6 +820,18 @@ public class sendingFragment extends Fragment {
         put("12_30", "Malachi 1-2, Psalms 65, Proverbs 30");
         put("12_31", "Malachi 3-4, Psalms 66, Proverbs 31");
     }};
+    private sendingViewModel sendingViewModel;
+    private TextView sendingTextView;
+    private TextView sendingQT_kor;
+    private String currentDate;
+    private ImageView image1;
+    private ImageView image2;
+    private ImageView image3;
+    private ImageView column;
+    private BottomNavigationView navigation;
+    private HorizontalScrollView horizontalScrollView;
+    private StringBuilder builder;
+    private String htmlContentInStringFormat;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

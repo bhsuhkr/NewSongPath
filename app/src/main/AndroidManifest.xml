@@ -16,37 +16,102 @@
     <application
         android:name=".App"
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:largeHeap="true"
-        android:hardwareAccelerated="false"
         android:usesCleartextTraffic="true">
 
         <activity
             android:name="com.newsong.newsongtime.newsongSplashActivity"
-            android:label="@string/app_name"
-            android:theme="@style/SplashThemeCommon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:screenOrientation="portrait">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashThemeCommon">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.newsong.newsongtime.SermonActivity" />
+
+        <activity android:name="com.newsong.newsongtime.SermonActivity"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name="com.newsong.newsongtime.MainActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"></activity>
         <activity
             android:name="com.newsong.newsongtime.JooBoActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"></activity>
 
         <activity
             android:name="com.newsong.newsongtime.TrackActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="com.newsong.newsongtime.track.Track1"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="com.newsong.newsongtime.track.Track2"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="com.newsong.newsongtime.track.Track3"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="com.newsong.newsongtime.track.Track4"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="com.newsong.newsongtime.track.Track5"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="com.newsong.newsongtime.track.Track6"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="com.newsong.newsongtime.track.Track7"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="com.newsong.newsongtime.track.Track8"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="com.newsong.newsongtime.track.Track9"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="com.newsong.newsongtime.track.Track10"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="com.newsong.newsongtime.track.Track11"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="com.newsong.newsongtime.track.Track12"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"></activity>
 
         <receiver android:name="com.newsong.newsongtime.NotificationPublisher" />
