@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -847,7 +846,6 @@ public class savingFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_saving, container, false);
 
         currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
-
 
         image1 = root.findViewById(R.id.imageView_saving1);
         image2 = root.findViewById(R.id.imageView_saving2);

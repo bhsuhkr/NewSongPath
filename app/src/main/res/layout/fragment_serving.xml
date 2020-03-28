@@ -78,26 +78,26 @@
 
                 <ImageView
                     android:id="@+id/imageView_serving1"
-                    android:clickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
+                    android:clickable="true"
                     android:src="@drawable/serving1_kor"></ImageView>
 
                 <ImageView
                     android:id="@+id/imageView_serving2"
-                    android:clickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
+                    android:clickable="true"
                     android:src="@drawable/serving2_kor"></ImageView>
 
                 <ImageView
                     android:id="@+id/imageView_serving3"
-                    android:clickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
+                    android:clickable="true"
                     android:src="@drawable/serving3_kor"></ImageView>
 
             </LinearLayout>

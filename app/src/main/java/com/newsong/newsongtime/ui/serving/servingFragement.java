@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -851,7 +850,6 @@ public class servingFragement extends Fragment {
         // Get current time (format: MM_dd)
         currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
 
-
         image1 = root.findViewById(R.id.imageView_serving1);
         image2 = root.findViewById(R.id.imageView_serving2);
         image3 = root.findViewById(R.id.imageView_serving3);
@@ -939,7 +937,6 @@ public class servingFragement extends Fragment {
                 }, 2000);
             }
         });
-
 
         servingTextView = root.findViewById(R.id.txtView_serving);
         servingTextView.setOnClickListener(new View.OnClickListener() {

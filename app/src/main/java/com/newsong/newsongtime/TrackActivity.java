@@ -164,14 +164,12 @@ public class TrackActivity extends AppCompatActivity {
         });
 
 
-
-
         loadMap(check_1, "01");
         int count1 = 0;
         for (int i = 1; i <= check_1.size(); i++) {
-            try{
+            try {
                 if (check_1.get(Integer.toString(i))) count1++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -184,9 +182,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_2, "02");
         int count2 = 0;
         for (int i = 1; i <= check_2.size(); i++) {
-            try{
+            try {
                 if (check_2.get(Integer.toString(i))) count2++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -199,9 +197,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_3, "03");
         int count3 = 0;
         for (int i = 1; i <= check_3.size(); i++) {
-            try{
+            try {
                 if (check_3.get(Integer.toString(i))) count3++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -214,9 +212,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_4, "04");
         int count4 = 0;
         for (int i = 1; i <= check_4.size(); i++) {
-            try{
+            try {
                 if (check_4.get(Integer.toString(i))) count4++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -229,9 +227,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_5, "05");
         int count5 = 0;
         for (int i = 1; i <= check_5.size(); i++) {
-            try{
+            try {
                 if (check_5.get(Integer.toString(i))) count5++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -244,9 +242,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_6, "06");
         int count6 = 0;
         for (int i = 1; i <= check_6.size(); i++) {
-            try{
+            try {
                 if (check_6.get(Integer.toString(i))) count6++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -259,9 +257,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_7, "07");
         int count7 = 0;
         for (int i = 1; i <= check_7.size(); i++) {
-            try{
+            try {
                 if (check_7.get(Integer.toString(i))) count7++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -274,9 +272,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_8, "08");
         int count8 = 0;
         for (int i = 1; i <= check_8.size(); i++) {
-            try{
+            try {
                 if (check_8.get(Integer.toString(i))) count8++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -289,9 +287,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_9, "09");
         int count9 = 0;
         for (int i = 1; i <= check_9.size(); i++) {
-            try{
+            try {
                 if (check_9.get(Integer.toString(i))) count9++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -304,9 +302,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_10, "10");
         int count10 = 0;
         for (int i = 1; i <= check_10.size(); i++) {
-            try{
+            try {
                 if (check_10.get(Integer.toString(i))) count10++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -319,9 +317,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_11, "11");
         int count11 = 0;
         for (int i = 1; i <= check_11.size(); i++) {
-            try{
+            try {
                 if (check_11.get(Integer.toString(i))) count11++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -334,9 +332,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_12, "12");
         int count12 = 0;
         for (int i = 1; i <= check_12.size(); i++) {
-            try{
+            try {
                 if (check_12.get(Integer.toString(i))) count12++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -354,9 +352,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_1, "01");
         int count1 = 0;
         for (int i = 1; i <= check_1.size(); i++) {
-            try{
+            try {
                 if (check_1.get(Integer.toString(i))) count1++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -368,9 +366,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_2, "02");
         int count2 = 0;
         for (int i = 1; i <= check_2.size(); i++) {
-            try{
+            try {
                 if (check_2.get(Integer.toString(i))) count2++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -382,9 +380,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_3, "03");
         int count3 = 0;
         for (int i = 1; i <= check_3.size(); i++) {
-            try{
+            try {
                 if (check_3.get(Integer.toString(i))) count3++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -396,9 +394,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_4, "04");
         int count4 = 0;
         for (int i = 1; i <= check_4.size(); i++) {
-            try{
+            try {
                 if (check_4.get(Integer.toString(i))) count4++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -410,9 +408,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_5, "05");
         int count5 = 0;
         for (int i = 1; i <= check_5.size(); i++) {
-            try{
+            try {
                 if (check_5.get(Integer.toString(i))) count5++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -424,9 +422,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_6, "06");
         int count6 = 0;
         for (int i = 1; i <= check_6.size(); i++) {
-            try{
+            try {
                 if (check_6.get(Integer.toString(i))) count6++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -438,9 +436,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_7, "07");
         int count7 = 0;
         for (int i = 1; i <= check_7.size(); i++) {
-            try{
+            try {
                 if (check_7.get(Integer.toString(i))) count7++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -452,9 +450,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_8, "08");
         int count8 = 0;
         for (int i = 1; i <= check_8.size(); i++) {
-            try{
+            try {
                 if (check_8.get(Integer.toString(i))) count8++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -466,9 +464,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_9, "09");
         int count9 = 0;
         for (int i = 1; i <= check_9.size(); i++) {
-            try{
+            try {
                 if (check_9.get(Integer.toString(i))) count9++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -480,9 +478,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_10, "10");
         int count10 = 0;
         for (int i = 1; i <= check_10.size(); i++) {
-            try{
+            try {
                 if (check_10.get(Integer.toString(i))) count10++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -494,9 +492,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_11, "11");
         int count11 = 0;
         for (int i = 1; i <= check_11.size(); i++) {
-            try{
+            try {
                 if (check_11.get(Integer.toString(i))) count11++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -508,9 +506,9 @@ public class TrackActivity extends AppCompatActivity {
         loadMap(check_12, "12");
         int count12 = 0;
         for (int i = 1; i <= check_12.size(); i++) {
-            try{
+            try {
                 if (check_12.get(Integer.toString(i))) count12++;
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
