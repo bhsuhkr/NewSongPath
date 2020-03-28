@@ -1,5 +1,6 @@
 package com.newsong.newsongtime.ui.saving;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -34,6 +35,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class savingFragment extends Fragment {
 
@@ -845,6 +848,95 @@ public class savingFragment extends Fragment {
 
         currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
 
+
+        image1 = root.findViewById(R.id.imageView_saving1);
+        image2 = root.findViewById(R.id.imageView_saving2);
+        image3 = root.findViewById(R.id.imageView_saving3);
+
+        image1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] current = currentDate.split("_");
+                loadMap(check, current[0]);
+                check.put(current[1], true);
+                saveMap(check, current[0]);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle("기록 완료");
+                builder.setMessage("저장되었습니다!");
+                builder.setIcon(R.drawable.checkmark);
+                builder.setCancelable(true);
+
+                final AlertDialog dlg = builder.create();
+
+                dlg.show();
+
+                final Timer t = new Timer();
+                t.schedule(new TimerTask() {
+                    public void run() {
+                        dlg.dismiss();
+                        t.cancel();
+                    }
+                }, 2000);
+            }
+        });
+
+        image2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] current = currentDate.split("_");
+                loadMap(check, current[0]);
+                check.put(current[1], true);
+                saveMap(check, current[0]);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle("기록 완료");
+                builder.setMessage("저장되었습니다!");
+                builder.setIcon(R.drawable.checkmark);
+                builder.setCancelable(true);
+
+                final AlertDialog dlg = builder.create();
+
+                dlg.show();
+
+                final Timer t = new Timer();
+                t.schedule(new TimerTask() {
+                    public void run() {
+                        dlg.dismiss();
+                        t.cancel();
+                    }
+                }, 2000);
+            }
+        });
+
+        image3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] current = currentDate.split("_");
+                loadMap(check, current[0]);
+                check.put(current[1], true);
+                saveMap(check, current[0]);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle("기록 완료");
+                builder.setMessage("저장되었습니다!");
+                builder.setIcon(R.drawable.checkmark);
+                builder.setCancelable(true);
+
+                final AlertDialog dlg = builder.create();
+
+                dlg.show();
+
+                final Timer t = new Timer();
+                t.schedule(new TimerTask() {
+                    public void run() {
+                        dlg.dismiss();
+                        t.cancel();
+                    }
+                }, 2000);
+            }
+        });
+
         savingTextView = root.findViewById(R.id.txtView_saving);
         savingTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -853,7 +945,24 @@ public class savingFragment extends Fragment {
                 loadMap(check, current[0]);
                 check.put(current[1], true);
                 saveMap(check, current[0]);
-                Toast.makeText(getContext(), "저장되었습니다", Toast.LENGTH_SHORT).show();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle("기록 완료");
+                builder.setMessage("저장되었습니다!");
+                builder.setIcon(R.drawable.checkmark);
+                builder.setCancelable(true);
+
+                final AlertDialog dlg = builder.create();
+
+                dlg.show();
+
+                final Timer t = new Timer();
+                t.schedule(new TimerTask() {
+                    public void run() {
+                        dlg.dismiss();
+                        t.cancel();
+                    }
+                }, 2000);
             }
         });
 
@@ -862,10 +971,6 @@ public class savingFragment extends Fragment {
         } catch (Exception e) {
 
         }
-
-        image1 = root.findViewById(R.id.imageView_saving1);
-        image2 = root.findViewById(R.id.imageView_saving2);
-        image3 = root.findViewById(R.id.imageView_saving3);
 
         navigation = root.findViewById(R.id.navigation);
         horizontalScrollView = root.findViewById(R.id.horizontalScroll_saving);
