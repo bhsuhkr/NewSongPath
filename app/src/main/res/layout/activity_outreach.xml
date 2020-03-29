@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sangsang"
+        android:text="지역사회 섬김사역"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="7dp"
+        android:background="@android:color/darker_gray" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:src="@drawable/outreach_poster" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="부탄교회 (New Life Bhutanese Church)"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 서정수, 유수아, 윤삼열, 김성민 \n사역시간: 매 주일 12:30 PM - 2:30 PM \n사역내용: 부탄 어린이들이 신앙 안에서 바른 성장 / 교회가 자립하여 재생산 할 수 있도록 도움 \n참여중인 목장: 버지니아 목장, 미얀마 목장"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="부탄교회 (Ignite Bhutanese Church)"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 신위제, 간호제 \n사역시간: 매 주일 2:30 PM - 4:30 PM \n사역내용: 부탄 어린이들이 신앙 안에서 바른 성장 / 교회가 자립하여 재생산 할 수 있도록 도움"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="Finding Joseph and Esther (난민사역)"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 한미정, 최태원 \n사역시간: 매주 토요일 9:00 AM - 1:00 PM \n사역내용: 난민사역은 난민들이 모여사는 아파트 지역에서 키즈클럽을 운영하며 난민아이들에게 크래프트등의 수업을 통하여 복음을 전하고 있습니다. 난민 아이들과 청소년들을 돌보고 더 나아가 난민아이들의 가정 방문을 통하여 난민 부모님들께 예수님의 복음을 전하는 사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="Two Hands 사역"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 한재욱, 서보현 \n사역시간: 2, 4째주 토요일 9:00 AM - 12:00 PM \n사역내용: 투핸즈사역은 다운타운에서 거리를 청소하고 복음을 전하는 사역입니다. DART 이동중, 다운타운 청소중에 직접 사람들을 만나고 복음을 전할 수 있는 사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="홈리스사역"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 김상규 \n사역시간: 매주 주일 3:00 PM - 5:00 PM \n사역내용: 홈리스사역은 다운타운에 있는 홈리스들이 모여 있는 지역에서 매 주일 찬송과 설교로 예배를 진행하고 따뜻한 한끼를 대접하며 예수님의 사랑과 복음을 전하는 사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="소망대학"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 지광호, 류연수 \n사역시간: 매달 첫번째 토요일 10:00 AM - 2:00 PM \n사역내용: 소망대학은 달라스에 거주하시는 시니어분들이 참여하는 행사입니다. 달라스에 있는 4-5개의 교회가 매주 맡아서 진행하며 뉴송교회가 매달 첫번째 토요일을 담당합니다. 시니어분들께점심식사대접과 세미나등을 진행하며 복음도 전하는 사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="양로원사역"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 이지성 \n사역시간: 매월 둘째주 수요일 10:00 AM - 12:00 PM \n사역내용: 양로원에 계신 어르신들을 섬기는 것으로 복음을 전하고, 위로와 소망을 주는 사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="EIS장애우사역"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 노혜경 \n사역시간: 한달에 3번 수요일 10:00 AM - 1:00 PM \n사역내용: 달라스 지역에서 있는 성인장애우들을 위한 학교 EIS Academy에서 점심봉사하고 교제하면 예수님의 사랑과 복음을 전하는 사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="UTD 유학생 사역"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 한재욱 \n사역시간: 매달 1, 3째주 토요일 10:00 AM - 11:30 AM \n사역내용: 캠퍼스 및 캠퍼스 주변 아파트에서 복음을 전하고 학생들을 뉴송교회 소속 목장으로 초대하여 사랑을 전하고 마트 라이드를도와 주는 사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="UNT 유학생 사역 "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 김영준, 이재형, 김주희 \n사역시간: 리즌 교회와 담당 사역자가 협의중 \n사역내용: 캠퍼스 및 캠퍼스 주변 아파트에서 전도, 학생들을 학교 근처의 리즌 교회로 초대하고 행사를 지원하는사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="갈렙사역 "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 고근백, 지광호 \n사역시간: 매달 셋째주 토요일 10:00 AM - 12:00PM \n사역내용: 뉴송교회 시니어 분들이 천국 소망을 가지고 인생 후반기에 더욱 하나님께 영광을 돌리기 위해 섬기는 사역으로 함께 예배드리며 점심식사 대접과 세미나 등을 진행하는 사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="이란교회 "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 도국경 \n사역시간: 매달 첫째, 셋째주 주일 1:30 PM - 3:30 PM \n사역내용: 리차드슨에 있는 이란교회에서 진행되는 사역으로 유치 또는 유스 학생 소그룹 시간에 동참 또는 인도 하는사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="농인사역"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 송민규 \n사역시간: 주일 1:30 PM - 2:30 PM \n사역내용: 초/중/고급반 수어교실 참여, 예배시 찬양/설교 통역, 농인 커뮤니티와 지속적으로 관계를 맺어가며 그들의 HeartLanguage인 수어로 복음을 전하는 사역을 추구하며 궁극적으로 복음화된 농인들이 다른 농인들에게 전도하여 농인 교회가 세워지는 것을 목표로 하는사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="한부모 자녀/ 입양 자녀 섬김 사역"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 최기혁 \n사역시간: 화요일, 목요일 6:00 PM - 8:30 PM \n사역내용: 싱글맘 및 자녀들을 돌보고 멘토링을 지원하는 사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="푸드팬트리"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 정세용 \n사역시간: 매주 목요일 1:00 PM - 5:00 PM \n사역내용: www.Metrocrestservice.org 에서 운영하는 푸드팬트리에 가서 섬기는 사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="이웃사랑회"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 정헌예 \n사역시간: 매달 마지막 주일  1:00 PM \n사역내용: 주위에 생활 형편이 힘드신 가정에 금전적 지원을 하고 예수님의 사랑과 복음을 전하는 사역입니다. 매달 마지막주일에 모여서 팀원들이 수혜자들을 심사하고 선정합니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="뉴송장학회"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 이재범 \n사역내용: 뉴송장학회는 달라스, 캐롤턴 등지의 관공서, 경찰서, 소방서등의 지역사회에 헌신하는 분들의 자녀들과, 형편이 어려운 한인유학생등에게 장학금을 지급하는 사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="체육사역"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 신용식 \n사역시간: 매주 화요일 7:00 PM - 9:00 PM \n사역내용: 체육사역은 스포츠을 통하여서 불신자들의 교회내 방문을 유도하고, 스포츠를 통하여서그들에게 복음을 전하는 사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="행복한쇼핑"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sangsang"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="담당자: 명영래 \n사역시간: 매주 화요일  10:00 AM \n사역내용: 행복한 쇼핑은 차편이 없어서 생필품등의 쇼핑이 힘든 분들이나 운전이 힘든 시니어분들을 대상으로 라이드를 제공하고 그 가운데서 예수님의 복음을전하는 사역입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
