@@ -24,48 +24,53 @@
         android:layout_height="45dp"
         android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/txtView_sending"
-        android:layout_weight="9"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:clickable="true"
-        android:fontFamily="@font/sangsang"
-        android:text="@string/error"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/txtView_sending"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:clickable="true"
+            android:fontFamily="@font/sangsang"
+            android:gravity="center"
+            android:text="@string/error"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/saveBtn"
-        android:background="@drawable/handwrite"
-        android:fontFamily="@font/sangsang"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:layout_marginRight="5dp"
-        android:clickable="true"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="35dp" />
+        <TextView
+            android:id="@+id/saveBtn"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/handwrite"
+            android:clickable="true"
+            android:fontFamily="@font/sangsang"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/text_sending"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:contentDescription="@string/text_editable_upcoming"
-        android:fontFamily="@font/sangsang"
-        android:maxLines="500"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:scrollbars="vertical"
-        android:text="로딩중...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
-        android:visibility="gone" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_sending"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:contentDescription="@string/text_editable_upcoming"
+            android:fontFamily="@font/sangsang"
+            android:maxLines="500"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="로딩중...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:visibility="gone" />
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -117,8 +122,5 @@
 
             </LinearLayout>
         </HorizontalScrollView>
-
     </LinearLayout>
-
-
 </LinearLayout>

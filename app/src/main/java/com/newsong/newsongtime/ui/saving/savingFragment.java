@@ -919,7 +919,6 @@ public class savingFragment extends Fragment {
         horizontalScrollView = root.findViewById(R.id.horizontalScroll_saving);
 
         savingQT_kor = root.findViewById(R.id.text_saving);
-        savingQT_kor.setMovementMethod(new ScrollingMovementMethod());
         builder = new StringBuilder();
 
         BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
