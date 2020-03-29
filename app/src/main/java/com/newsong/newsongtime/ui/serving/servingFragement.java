@@ -1,5 +1,8 @@
 package com.newsong.newsongtime.ui.serving;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -18,6 +21,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.newsong.newsongtime.R;
 
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -27,8 +31,11 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class servingFragement extends Fragment {
 
@@ -820,9 +827,11 @@ public class servingFragement extends Fragment {
         put("12_30", "Job 21-22, Psalms 126");
         put("12_31", "Job 23-24, Psalms 127");
     }};
+    Map<String, Boolean> check = new HashMap<String, Boolean>();
     private servingViewModel notificationsViewModel;
     private TextView servingTextView;
     private TextView servingQT_kor;
+    private TextView handWrite;
     private String currentDate;
     private ImageView image1;
     private ImageView image2;
@@ -842,8 +851,65 @@ public class servingFragement extends Fragment {
         // Get current time (format: MM_dd)
         currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
 
+        handWrite = root.findViewById(R.id.saveBtn);
+        handWrite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] current = currentDate.split("_");
+                loadMap(check, current[0]);
+                check.put(current[1], true);
+                saveMap(check, current[0]);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle("기록 완료");
+                builder.setMessage("저장되었습니다!");
+                builder.setIcon(R.drawable.checkmark);
+                builder.setCancelable(true);
+
+                final AlertDialog dlg = builder.create();
+
+                dlg.show();
+
+                final Timer t = new Timer();
+                t.schedule(new TimerTask() {
+                    public void run() {
+                        dlg.dismiss();
+                        t.cancel();
+                    }
+                }, 2000);
+            }
+        });
+
+        servingTextView = root.findViewById(R.id.txtView_serving);
+        servingTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] current = currentDate.split("_");
+                loadMap(check, current[0]);
+                check.put(current[1], true);
+                saveMap(check, current[0]);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle("기록 완료");
+                builder.setMessage("저장되었습니다!");
+                builder.setIcon(R.drawable.checkmark);
+                builder.setCancelable(true);
+
+                final AlertDialog dlg = builder.create();
+
+                dlg.show();
+
+                final Timer t = new Timer();
+                t.schedule(new TimerTask() {
+                    public void run() {
+                        dlg.dismiss();
+                        t.cancel();
+                    }
+                }, 2000);
+            }
+        });
+
         try {
-            servingTextView = root.findViewById(R.id.txtView_serving);
             servingTextView.setText(servingSchedule_kor.get(currentDate));
         } catch (Exception e) {
 //            Toast.makeText(this,"관리자에게 문의해주세요.", Toast.LENGTH_SHORT).show();
@@ -852,10 +918,9 @@ public class servingFragement extends Fragment {
         image1 = root.findViewById(R.id.imageView_serving1);
         image2 = root.findViewById(R.id.imageView_serving2);
         image3 = root.findViewById(R.id.imageView_serving3);
-        column = root.findViewById(R.id.serving_column);
-
         navigation = root.findViewById(R.id.navigation);
         horizontalScrollView = root.findViewById(R.id.horizontalScroll_serving);
+        column = root.findViewById(R.id.serving_column);
 
         servingQT_kor = root.findViewById(R.id.text_serving);
         servingQT_kor.setMovementMethod(new ScrollingMovementMethod());
@@ -906,13 +971,6 @@ public class servingFragement extends Fragment {
                             servingTextView.setText("관리자에게 문의해주세요.");
                         }
                         return true;
-//                    case R.id.menu_english_QT:
-//                        Serving.JsoupAsyncTask jsoupAsyncTask2 = new Serving.JsoupAsyncTask();
-//                        jsoupAsyncTask2.execute();
-//                        horizontalScrollView.setVisibility(View.GONE);
-//                        column.setVisibility(View.GONE);
-//                        servingQT_kor.setVisibility(View.VISIBLE);
-//                        return true;
                 }
                 return false;
             }
@@ -920,6 +978,37 @@ public class servingFragement extends Fragment {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         return root;
+    }
+
+    public Map<String, Boolean> loadMap(Map<String, Boolean> check, String month) {
+        SharedPreferences pSharedPref = getContext().getSharedPreferences("progress_" + month, Context.MODE_PRIVATE);
+        try {
+            if (pSharedPref != null) {
+                String jsonString = pSharedPref.getString("Track_" + month, (new JSONObject()).toString());
+                JSONObject jsonObject = new JSONObject(jsonString);
+                Iterator<String> keysItr = jsonObject.keys();
+                while (keysItr.hasNext()) {
+                    String key = keysItr.next();
+                    Boolean value = (Boolean) jsonObject.get(key);
+                    check.put(key, value);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
+
+    public void saveMap(Map<String, Boolean> inputMap, String month) {
+        SharedPreferences pSharedPref = getContext().getSharedPreferences("progress_" + month, Context.MODE_PRIVATE);
+        if (pSharedPref != null) {
+            JSONObject jsonObject = new JSONObject(inputMap);
+            String jsonString = jsonObject.toString();
+            SharedPreferences.Editor editor = pSharedPref.edit();
+            editor.remove("Track_" + month).commit();
+            editor.putString("Track_" + month, jsonString);
+            editor.commit();
+        }
     }
 
     private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {

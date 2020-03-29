@@ -1,5 +1,8 @@
 package com.newsong.newsongtime.ui.sending;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -18,6 +21,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.newsong.newsongtime.R;
 
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -27,8 +31,11 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class sendingFragment extends Fragment {
 
@@ -820,9 +827,11 @@ public class sendingFragment extends Fragment {
         put("12_30", "Malachi 1-2, Psalms 65, Proverbs 30");
         put("12_31", "Malachi 3-4, Psalms 66, Proverbs 31");
     }};
+    Map<String, Boolean> check = new HashMap<String, Boolean>();
     private sendingViewModel sendingViewModel;
     private TextView sendingTextView;
     private TextView sendingQT_kor;
+    private TextView handWrite;
     private String currentDate;
     private ImageView image1;
     private ImageView image2;
@@ -836,16 +845,72 @@ public class sendingFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        // Get current time (format: MM_dd)
-        currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
-
         sendingViewModel =
                 ViewModelProviders.of(this).get(sendingViewModel.class);
         View root = inflater.inflate(R.layout.fragment_sending, container, false);
 
+        // Get current time (format: MM_dd)
+        currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
+
+        handWrite = root.findViewById(R.id.saveBtn);
+        handWrite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] current = currentDate.split("_");
+                loadMap(check, current[0]);
+                check.put(current[1], true);
+                saveMap(check, current[0]);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle("기록 완료");
+                builder.setMessage("저장되었습니다!");
+                builder.setIcon(R.drawable.checkmark);
+                builder.setCancelable(true);
+
+                final AlertDialog dlg = builder.create();
+
+                dlg.show();
+
+                final Timer t = new Timer();
+                t.schedule(new TimerTask() {
+                    public void run() {
+                        dlg.dismiss();
+                        t.cancel();
+                    }
+                }, 2000);
+            }
+        });
+
+        sendingTextView = root.findViewById(R.id.txtView_sending);
+        sendingTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] current = currentDate.split("_");
+                loadMap(check, current[0]);
+                check.put(current[1], true);
+                saveMap(check, current[0]);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle("기록 완료");
+                builder.setMessage("저장되었습니다!");
+                builder.setIcon(R.drawable.checkmark);
+                builder.setCancelable(true);
+
+                final AlertDialog dlg = builder.create();
+
+                dlg.show();
+
+                final Timer t = new Timer();
+                t.schedule(new TimerTask() {
+                    public void run() {
+                        dlg.dismiss();
+                        t.cancel();
+                    }
+                }, 2000);
+            }
+        });
 
         try {
-            sendingTextView = root.findViewById(R.id.txtView_sending);
             sendingTextView.setText(sendingSchedule_kor.get(currentDate));
         } catch (Exception e) {
 //            Toast.makeText(this,"관리자에게 문의해주세요.", Toast.LENGTH_SHORT).show();
@@ -854,10 +919,9 @@ public class sendingFragment extends Fragment {
         image1 = root.findViewById(R.id.imageView_sending1);
         image2 = root.findViewById(R.id.imageView_sending2);
         image3 = root.findViewById(R.id.imageView_sending3);
-        column = root.findViewById(R.id.sending_column);
-
         navigation = root.findViewById(R.id.navigation);
         horizontalScrollView = root.findViewById(R.id.horizontalScroll_sending);
+        column = root.findViewById(R.id.sending_column);
 
         sendingQT_kor = root.findViewById(R.id.text_sending);
         sendingQT_kor.setMovementMethod(new ScrollingMovementMethod());
@@ -908,14 +972,6 @@ public class sendingFragment extends Fragment {
                             sendingTextView.setText("관리자에게 문의해주세요.");
                         }
                         return true;
-//                    case R.id.menu_english_QT:
-////                        Sending.JsoupAsyncTask jsoupAsyncTask2 = new Sending.JsoupAsyncTask();
-////                        jsoupAsyncTask2.execute();
-//
-//                        horizontalScrollView.setVisibility(View.GONE);
-//                        sendingQT_kor.setVisibility(View.VISIBLE);
-//                        return true;
-
                 }
                 return false;
             }
@@ -923,6 +979,37 @@ public class sendingFragment extends Fragment {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         return root;
+    }
+
+    public Map<String, Boolean> loadMap(Map<String, Boolean> check, String month) {
+        SharedPreferences pSharedPref = getContext().getSharedPreferences("progress_" + month, Context.MODE_PRIVATE);
+        try {
+            if (pSharedPref != null) {
+                String jsonString = pSharedPref.getString("Track_" + month, (new JSONObject()).toString());
+                JSONObject jsonObject = new JSONObject(jsonString);
+                Iterator<String> keysItr = jsonObject.keys();
+                while (keysItr.hasNext()) {
+                    String key = keysItr.next();
+                    Boolean value = (Boolean) jsonObject.get(key);
+                    check.put(key, value);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
+
+    public void saveMap(Map<String, Boolean> inputMap, String month) {
+        SharedPreferences pSharedPref = getContext().getSharedPreferences("progress_" + month, Context.MODE_PRIVATE);
+        if (pSharedPref != null) {
+            JSONObject jsonObject = new JSONObject(inputMap);
+            String jsonString = jsonObject.toString();
+            SharedPreferences.Editor editor = pSharedPref.edit();
+            editor.remove("Track_" + month).commit();
+            editor.putString("Track_" + month, jsonString);
+            editor.commit();
+        }
     }
 
     private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
