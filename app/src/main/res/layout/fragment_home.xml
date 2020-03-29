@@ -104,8 +104,8 @@
 
                 <Button
                     android:id="@+id/sermonBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
                     android:layout_weight="1"
                     android:background="@drawable/sermon_btn"
                     android:fontFamily="@font/sangsang"
@@ -121,8 +121,8 @@
 
                 <Button
                     android:id="@+id/jooboBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
                     android:layout_weight="1"
                     android:background="@drawable/book_btn"
                     android:fontFamily="@font/sangsang"
@@ -146,8 +146,8 @@
 
                 <Button
                     android:id="@+id/homepageBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
                     android:layout_weight="1"
                     android:background="@drawable/home_btn"
                     android:fontFamily="@font/sangsang"
@@ -161,8 +161,8 @@
 
                 <Button
                     android:id="@+id/outreachBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
                     android:layout_weight="1"
                     android:background="@drawable/outreach_btn"
                     android:fontFamily="@font/sangsang"
