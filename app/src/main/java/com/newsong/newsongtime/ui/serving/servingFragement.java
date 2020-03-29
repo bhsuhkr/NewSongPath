@@ -831,6 +831,7 @@ public class servingFragement extends Fragment {
     private servingViewModel notificationsViewModel;
     private TextView servingTextView;
     private TextView servingQT_kor;
+    private TextView handWrite;
     private String currentDate;
     private ImageView image1;
     private ImageView image2;
@@ -850,67 +851,8 @@ public class servingFragement extends Fragment {
         // Get current time (format: MM_dd)
         currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
 
-        image1 = root.findViewById(R.id.imageView_serving1);
-        image2 = root.findViewById(R.id.imageView_serving2);
-        image3 = root.findViewById(R.id.imageView_serving3);
-
-        image1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String[] current = currentDate.split("_");
-                loadMap(check, current[0]);
-                check.put(current[1], true);
-                saveMap(check, current[0]);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                builder.setTitle("기록 완료");
-                builder.setMessage("저장되었습니다!");
-                builder.setIcon(R.drawable.checkmark);
-                builder.setCancelable(true);
-
-                final AlertDialog dlg = builder.create();
-
-                dlg.show();
-
-                final Timer t = new Timer();
-                t.schedule(new TimerTask() {
-                    public void run() {
-                        dlg.dismiss();
-                        t.cancel();
-                    }
-                }, 2000);
-            }
-        });
-
-        image2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String[] current = currentDate.split("_");
-                loadMap(check, current[0]);
-                check.put(current[1], true);
-                saveMap(check, current[0]);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                builder.setTitle("기록 완료");
-                builder.setMessage("저장되었습니다!");
-                builder.setIcon(R.drawable.checkmark);
-                builder.setCancelable(true);
-
-                final AlertDialog dlg = builder.create();
-
-                dlg.show();
-
-                final Timer t = new Timer();
-                t.schedule(new TimerTask() {
-                    public void run() {
-                        dlg.dismiss();
-                        t.cancel();
-                    }
-                }, 2000);
-            }
-        });
-
-        image3.setOnClickListener(new View.OnClickListener() {
+        handWrite = root.findViewById(R.id.saveBtn);
+        handWrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String[] current = currentDate.split("_");
@@ -973,10 +915,12 @@ public class servingFragement extends Fragment {
 //            Toast.makeText(this,"관리자에게 문의해주세요.", Toast.LENGTH_SHORT).show();
         }
 
-        column = root.findViewById(R.id.serving_column);
-
+        image1 = root.findViewById(R.id.imageView_serving1);
+        image2 = root.findViewById(R.id.imageView_serving2);
+        image3 = root.findViewById(R.id.imageView_serving3);
         navigation = root.findViewById(R.id.navigation);
         horizontalScrollView = root.findViewById(R.id.horizontalScroll_serving);
+        column = root.findViewById(R.id.serving_column);
 
         servingQT_kor = root.findViewById(R.id.text_serving);
         servingQT_kor.setMovementMethod(new ScrollingMovementMethod());
