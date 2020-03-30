@@ -46,18 +46,18 @@ public class TrackActivity extends AppCompatActivity {
     Map<String, Boolean> check_11 = new HashMap<String, Boolean>();
     Map<String, Boolean> check_12 = new HashMap<String, Boolean>();
 
-    private TextView tract1;
-    private TextView tract2;
-    private TextView tract3;
-    private TextView tract4;
-    private TextView tract5;
-    private TextView tract6;
-    private TextView tract7;
-    private TextView tract8;
-    private TextView tract9;
-    private TextView tract10;
-    private TextView tract11;
-    private TextView tract12;
+    private TextView track1;
+    private TextView track2;
+    private TextView track3;
+    private TextView track4;
+    private TextView track5;
+    private TextView track6;
+    private TextView track7;
+    private TextView track8;
+    private TextView track9;
+    private TextView track10;
+    private TextView track11;
+    private TextView track12;
 
     private ProgressBar progressBar1;
     private ProgressBar progressBar2;
@@ -79,86 +79,98 @@ public class TrackActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_track);
 
-        tract1 = findViewById(R.id.track_1);
-        tract1.setOnClickListener(new View.OnClickListener() {
+        track1 = findViewById(R.id.track_1);
+        track1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                track1.setEnabled(false);
                 startActivity(new Intent(getBaseContext(), Track01.class));
             }
         });
 
-        tract2 = findViewById(R.id.track_2);
-        tract2.setOnClickListener(new View.OnClickListener() {
+        track2 = findViewById(R.id.track_2);
+        track2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                track2.setEnabled(false);
                 startActivity(new Intent(getBaseContext(), Track02.class));
             }
         });
 
-        tract3 = findViewById(R.id.track_3);
-        tract3.setOnClickListener(new View.OnClickListener() {
+        track3 = findViewById(R.id.track_3);
+        track3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                track3.setEnabled(false);
                 startActivity(new Intent(getBaseContext(), Track03.class));
             }
         });
 
-        tract4 = findViewById(R.id.track_4);
-        tract4.setOnClickListener(new View.OnClickListener() {
+        track4 = findViewById(R.id.track_4);
+        track4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                track4.setEnabled(false);
                 startActivity(new Intent(getBaseContext(), Track04.class));
             }
         });
 
-        tract5 = findViewById(R.id.track_5);
-        tract5.setOnClickListener(new View.OnClickListener() {
+        track5 = findViewById(R.id.track_5);
+        track5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                track5.setEnabled(false);
                 startActivity(new Intent(getBaseContext(), Track05.class));
             }
         });
 
-        tract6 = findViewById(R.id.track_6);
-        tract6.setOnClickListener(new View.OnClickListener() {
+        track6 = findViewById(R.id.track_6);
+        track6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                track6.setEnabled(false);
                 startActivity(new Intent(getBaseContext(), Track06.class));
             }
         });
 
-        tract7 = findViewById(R.id.track_7);
-        tract7.setOnClickListener(new View.OnClickListener() {
+        track7 = findViewById(R.id.track_7);
+        track7.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                track7.setEnabled(false);
                 startActivity(new Intent(getBaseContext(), Track07.class));
             }
         });
 
-        tract8 = findViewById(R.id.track_8);
-        tract8.setOnClickListener(new View.OnClickListener() {
+        track8 = findViewById(R.id.track_8);
+        track8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                track8.setEnabled(false);
                 startActivity(new Intent(getBaseContext(), Track08.class));
             }
         });
 
-        tract9 = findViewById(R.id.track_9);
-        tract9.setOnClickListener(new View.OnClickListener() {
+        track9 = findViewById(R.id.track_9);
+        track9.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                track9.setEnabled(false);
                 startActivity(new Intent(getBaseContext(), Track09.class));
             }
         });
 
-        tract10 = findViewById(R.id.track_10);
-        tract10.setOnClickListener(new View.OnClickListener() {
+        track10 = findViewById(R.id.track_10);
+        track10.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                track10.setEnabled(false);
                 startActivity(new Intent(getBaseContext(), Track10.class));
             }
         });
 
-        tract11 = findViewById(R.id.track_11);
-        tract11.setOnClickListener(new View.OnClickListener() {
+        track11 = findViewById(R.id.track_11);
+        track11.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                track11.setEnabled(false);
                 startActivity(new Intent(getBaseContext(), Track11.class));
             }
         });
 
-        tract12 = findViewById(R.id.track_12);
-        tract12.setOnClickListener(new View.OnClickListener() {
+        track12 = findViewById(R.id.track_12);
+        track12.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                track12.setEnabled(false);
                 startActivity(new Intent(getBaseContext(), Track12.class));
             }
         });
@@ -348,6 +360,19 @@ public class TrackActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
+
+        track1.setEnabled(true);
+        track2.setEnabled(true);
+        track3.setEnabled(true);
+        track4.setEnabled(true);
+        track5.setEnabled(true);
+        track6.setEnabled(true);
+        track7.setEnabled(true);
+        track8.setEnabled(true);
+        track9.setEnabled(true);
+        track10.setEnabled(true);
+        track11.setEnabled(true);
+        track12.setEnabled(true);
 
         loadMap(check_1, "01");
         int count1 = 0;

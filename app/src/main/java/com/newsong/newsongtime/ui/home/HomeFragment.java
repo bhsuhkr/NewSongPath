@@ -36,7 +36,6 @@ public class HomeFragment extends Fragment {
 
     private static final String url = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2562&lef=&sublef=&page=1&search_select=&search_text=";
     private static final String homepageURL = "http://www.newsongdallas.org/";
-//    private static final String outreachURL = "http://www.newsongdallas.org/tong/uotc/uotc_view.asp?uotc_code=5152&uotc=24258&lef=05&sublef=undefined";
     String getUrl;
     String htmlContentInStringFormat;
     StringBuilder builder;

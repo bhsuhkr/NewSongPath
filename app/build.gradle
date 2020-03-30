@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -7,7 +8,7 @@ android {
         applicationId "com.newsong.newsongtime"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 16
+        versionCode 17
         versionName "1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -30,7 +31,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("C:/Project/Android/Keys/NewsongTime.jks")
+            storeFile file("C:/Projects/Keys/NewsongTime.jks")
             storePassword "1q2w3e4r%T"
             keyAlias "key0"
             keyPassword "1q2w3e4r%T"
@@ -67,5 +68,3 @@ dependencies {
     implementation files('src\\main\\java\\com\\newsong\\newsongtime\\YouTubeAndroidPlayerApi.jar')
 
 }
-
-apply plugin: 'com.google.gms.google-services'
