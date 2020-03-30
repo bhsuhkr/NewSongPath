@@ -832,12 +832,14 @@ public class sendingFragment extends Fragment {
     private TextView sendingTextView;
     private TextView sendingQT_kor;
     private TextView handWrite;
+    private TextView sending_kor;
+    private TextView sending_qt;
+    private TextView sending_eng;
     private String currentDate;
     private ImageView image1;
     private ImageView image2;
     private ImageView image3;
     private ImageView column;
-    private BottomNavigationView navigation;
     private HorizontalScrollView horizontalScrollView;
     private StringBuilder builder;
     private String htmlContentInStringFormat;
@@ -848,6 +850,9 @@ public class sendingFragment extends Fragment {
         sendingViewModel =
                 ViewModelProviders.of(this).get(sendingViewModel.class);
         View root = inflater.inflate(R.layout.fragment_sending, container, false);
+
+        sendingFragment.JsoupAsyncTask jsoupAsyncTask = new sendingFragment.JsoupAsyncTask();
+        jsoupAsyncTask.execute();
 
         // Get current time (format: MM_dd)
         currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
@@ -868,7 +873,6 @@ public class sendingFragment extends Fragment {
                 builder.setCancelable(true);
 
                 final AlertDialog dlg = builder.create();
-
                 dlg.show();
 
                 final Timer t = new Timer();
@@ -897,7 +901,6 @@ public class sendingFragment extends Fragment {
                 builder.setCancelable(true);
 
                 final AlertDialog dlg = builder.create();
-
                 dlg.show();
 
                 final Timer t = new Timer();
@@ -919,7 +922,6 @@ public class sendingFragment extends Fragment {
         image1 = root.findViewById(R.id.imageView_sending1);
         image2 = root.findViewById(R.id.imageView_sending2);
         image3 = root.findViewById(R.id.imageView_sending3);
-        navigation = root.findViewById(R.id.navigation);
         horizontalScrollView = root.findViewById(R.id.horizontalScroll_sending);
         column = root.findViewById(R.id.sending_column);
 
@@ -927,56 +929,64 @@ public class sendingFragment extends Fragment {
         sendingQT_kor.setMovementMethod(new ScrollingMovementMethod());
         builder = new StringBuilder();
 
-        BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-                = new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.menu_korean:
-                        sendingQT_kor.setVisibility(View.GONE);
-                        column.setVisibility(View.VISIBLE);
-                        column.setImageResource(R.drawable.column_kor);
-                        image1.setImageResource(R.drawable.sending1_kor);
-                        image2.setImageResource(R.drawable.sending2_kor);
-                        image3.setImageResource(R.drawable.sending3_kor);
-                        horizontalScrollView.setVisibility(View.VISIBLE);
-                        try {
-                            sendingTextView.setText(sendingSchedule_kor.get(currentDate));
-                        } catch (Exception e) {
-                            sendingTextView.setText("관리자에게 문의해주세요.");
-                        }
-                        return true;
-                    case R.id.menu_korean_QT:
-                        sendingFragment.JsoupAsyncTask jsoupAsyncTask = new sendingFragment.JsoupAsyncTask();
-                        jsoupAsyncTask.execute();
-                        column.setVisibility(View.GONE);
-                        horizontalScrollView.setVisibility(View.GONE);
-                        sendingQT_kor.setVisibility(View.VISIBLE);
-                        try {
-                            sendingTextView.setText(sendingSchedule_kor.get(currentDate));
-                        } catch (Exception e) {
-                            sendingTextView.setText("관리자에게 문의해주세요.");
-                        }
-                        return true;
-                    case R.id.menu_english:
-                        sendingQT_kor.setVisibility(View.GONE);
-                        column.setVisibility(View.VISIBLE);
-                        column.setImageResource(R.drawable.column_eng);
-                        image1.setImageResource(R.drawable.sending1_eng);
-                        image2.setImageResource(R.drawable.sending2_eng);
-                        image3.setImageResource(R.drawable.sending3_eng);
-                        horizontalScrollView.setVisibility(View.VISIBLE);
-                        try {
-                            sendingTextView.setText(sendingSchedule_eng.get(currentDate));
-                        } catch (Exception e) {
-                            sendingTextView.setText("관리자에게 문의해주세요.");
-                        }
-                        return true;
+        sending_kor = root.findViewById(R.id.sending_korean);
+        sending_kor.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                sending_kor.setEnabled(false);
+                sending_qt.setEnabled(true);
+                sending_eng.setEnabled(true);
+                sendingQT_kor.setVisibility(View.GONE);
+                column.setVisibility(View.VISIBLE);
+                column.setImageResource(R.drawable.column_kor);
+                image1.setImageResource(R.drawable.sending1_kor);
+                image2.setImageResource(R.drawable.sending2_kor);
+                image3.setImageResource(R.drawable.sending3_kor);
+                horizontalScrollView.setVisibility(View.VISIBLE);
+                try {
+                    sendingTextView.setText(sendingSchedule_kor.get(currentDate));
+                } catch (Exception e) {
+                    sendingTextView.setText("관리자에게 문의해주세요.");
                 }
-                return false;
             }
-        };
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        });
+
+        sending_qt = root.findViewById(R.id.sending_qt);
+        sending_qt.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                sending_kor.setEnabled(true);
+                sending_qt.setEnabled(false);
+                sending_eng.setEnabled(true);
+                column.setVisibility(View.GONE);
+                horizontalScrollView.setVisibility(View.GONE);
+                sendingQT_kor.setVisibility(View.VISIBLE);
+                try {
+                    sendingTextView.setText(sendingSchedule_kor.get(currentDate));
+                } catch (Exception e) {
+                    sendingTextView.setText("관리자에게 문의해주세요.");
+                }
+            }
+        });
+
+        sending_eng = root.findViewById(R.id.sending_english);
+        sending_eng.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                sending_kor.setEnabled(true);
+                sending_qt.setEnabled(true);
+                sending_eng.setEnabled(false);
+                sendingQT_kor.setVisibility(View.GONE);
+                column.setVisibility(View.VISIBLE);
+                column.setImageResource(R.drawable.column_eng);
+                image1.setImageResource(R.drawable.sending1_eng);
+                image2.setImageResource(R.drawable.sending2_eng);
+                image3.setImageResource(R.drawable.sending3_eng);
+                horizontalScrollView.setVisibility(View.VISIBLE);
+                try {
+                    sendingTextView.setText(sendingSchedule_eng.get(currentDate));
+                } catch (Exception e) {
+                    sendingTextView.setText("관리자에게 문의해주세요.");
+                }
+            }
+        });
 
         return root;
     }

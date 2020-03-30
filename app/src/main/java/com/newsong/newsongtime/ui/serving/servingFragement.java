@@ -832,12 +832,14 @@ public class servingFragement extends Fragment {
     private TextView servingTextView;
     private TextView servingQT_kor;
     private TextView handWrite;
+    private TextView serving_kor;
+    private TextView serving_qt;
+    private TextView serving_eng;
     private String currentDate;
     private ImageView image1;
     private ImageView image2;
     private ImageView image3;
     private ImageView column;
-    private BottomNavigationView navigation;
     private HorizontalScrollView horizontalScrollView;
     private StringBuilder builder;
     private String htmlContentInStringFormat;
@@ -847,6 +849,9 @@ public class servingFragement extends Fragment {
         notificationsViewModel =
                 ViewModelProviders.of(this).get(servingViewModel.class);
         View root = inflater.inflate(R.layout.fragment_serving, container, false);
+
+        servingFragement.JsoupAsyncTask jsoupAsyncTask = new servingFragement.JsoupAsyncTask();
+        jsoupAsyncTask.execute();
 
         // Get current time (format: MM_dd)
         currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
@@ -867,7 +872,6 @@ public class servingFragement extends Fragment {
                 builder.setCancelable(true);
 
                 final AlertDialog dlg = builder.create();
-
                 dlg.show();
 
                 final Timer t = new Timer();
@@ -896,7 +900,6 @@ public class servingFragement extends Fragment {
                 builder.setCancelable(true);
 
                 final AlertDialog dlg = builder.create();
-
                 dlg.show();
 
                 final Timer t = new Timer();
@@ -918,7 +921,6 @@ public class servingFragement extends Fragment {
         image1 = root.findViewById(R.id.imageView_serving1);
         image2 = root.findViewById(R.id.imageView_serving2);
         image3 = root.findViewById(R.id.imageView_serving3);
-        navigation = root.findViewById(R.id.navigation);
         horizontalScrollView = root.findViewById(R.id.horizontalScroll_serving);
         column = root.findViewById(R.id.serving_column);
 
@@ -926,56 +928,64 @@ public class servingFragement extends Fragment {
         servingQT_kor.setMovementMethod(new ScrollingMovementMethod());
         builder = new StringBuilder();
 
-        BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-                = new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.menu_korean:
-                        servingQT_kor.setVisibility(View.GONE);
-                        column.setVisibility(View.VISIBLE);
-                        column.setImageResource(R.drawable.column_kor);
-                        image1.setImageResource(R.drawable.serving1_kor);
-                        image2.setImageResource(R.drawable.serving2_kor);
-                        image3.setImageResource(R.drawable.serving3_kor);
-                        horizontalScrollView.setVisibility(View.VISIBLE);
-                        try {
-                            servingTextView.setText(servingSchedule_kor.get(currentDate));
-                        } catch (Exception e) {
-                            servingTextView.setText("관리자에게 문의해주세요.");
-                        }
-                        return true;
-                    case R.id.menu_korean_QT:
-                        servingFragement.JsoupAsyncTask jsoupAsyncTask = new servingFragement.JsoupAsyncTask();
-                        jsoupAsyncTask.execute();
-                        horizontalScrollView.setVisibility(View.GONE);
-                        column.setVisibility(View.GONE);
-                        servingQT_kor.setVisibility(View.VISIBLE);
-                        try {
-                            servingTextView.setText(servingSchedule_kor.get(currentDate));
-                        } catch (Exception e) {
-                            servingTextView.setText("관리자에게 문의해주세요.");
-                        }
-                        return true;
-                    case R.id.menu_english:
-                        servingQT_kor.setVisibility(View.GONE);
-                        column.setVisibility(View.VISIBLE);
-                        column.setImageResource(R.drawable.column_eng);
-                        image1.setImageResource(R.drawable.serving1_eng);
-                        image2.setImageResource(R.drawable.serving2_eng);
-                        image3.setImageResource(R.drawable.serving3_eng);
-                        horizontalScrollView.setVisibility(View.VISIBLE);
-                        try {
-                            servingTextView.setText(servingSchedule_eng.get(currentDate));
-                        } catch (Exception e) {
-                            servingTextView.setText("관리자에게 문의해주세요.");
-                        }
-                        return true;
+        serving_kor = root.findViewById(R.id.serving_korean);
+        serving_kor.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                serving_kor.setEnabled(false);
+                serving_qt.setEnabled(true);
+                serving_eng.setEnabled(true);
+                servingQT_kor.setVisibility(View.GONE);
+                column.setVisibility(View.VISIBLE);
+                column.setImageResource(R.drawable.column_kor);
+                image1.setImageResource(R.drawable.serving1_kor);
+                image2.setImageResource(R.drawable.serving2_kor);
+                image3.setImageResource(R.drawable.serving3_kor);
+                horizontalScrollView.setVisibility(View.VISIBLE);
+                try {
+                    servingTextView.setText(servingSchedule_kor.get(currentDate));
+                } catch (Exception e) {
+                    servingTextView.setText("관리자에게 문의해주세요.");
                 }
-                return false;
             }
-        };
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        });
+
+        serving_qt = root.findViewById(R.id.serving_qt);
+        serving_qt.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                serving_kor.setEnabled(true);
+                serving_qt.setEnabled(false);
+                serving_eng.setEnabled(true);
+                horizontalScrollView.setVisibility(View.GONE);
+                column.setVisibility(View.GONE);
+                servingQT_kor.setVisibility(View.VISIBLE);
+                try {
+                    servingTextView.setText(servingSchedule_kor.get(currentDate));
+                } catch (Exception e) {
+                    servingTextView.setText("관리자에게 문의해주세요.");
+                }
+            }
+        });
+
+        serving_eng = root.findViewById(R.id.serving_english);
+        serving_eng.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                serving_kor.setEnabled(true);
+                serving_qt.setEnabled(true);
+                serving_eng.setEnabled(false);
+                servingQT_kor.setVisibility(View.GONE);
+                column.setVisibility(View.VISIBLE);
+                column.setImageResource(R.drawable.column_eng);
+                image1.setImageResource(R.drawable.serving1_eng);
+                image2.setImageResource(R.drawable.serving2_eng);
+                image3.setImageResource(R.drawable.serving3_eng);
+                horizontalScrollView.setVisibility(View.VISIBLE);
+                try {
+                    servingTextView.setText(servingSchedule_eng.get(currentDate));
+                } catch (Exception e) {
+                    servingTextView.setText("관리자에게 문의해주세요.");
+                }
+            }
+        });
 
         return root;
     }
