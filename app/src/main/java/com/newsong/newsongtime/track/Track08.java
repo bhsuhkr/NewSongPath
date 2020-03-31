@@ -3,12 +3,18 @@ package com.newsong.newsongtime.track;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.newsong.newsongtime.R;
 
 import org.json.JSONObject;
@@ -85,6 +91,9 @@ public class Track08 extends AppCompatActivity {
         put("30", false);
         put("31", false);
     }};
+    String androidId;
+    DatabaseReference rootRef;
+    DatabaseReference playersRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,31 +102,52 @@ public class Track08 extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.track_8);
 
-        loadMap();
+        androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
 
-        for (int i = 1; i <= 31; i++) {
-            TextView current = findViewById(id_list.get(Integer.toString(i)));
+        // initialize map
+        rootRef = FirebaseDatabase.getInstance().getReference();
+        playersRef = rootRef.child("Track").child(androidId).child("August");
 
-            if (check.get(Integer.toString(i))) {
-                current.setBackgroundResource(R.drawable.checkmark);
-            } else {
-                current.setBackgroundResource(R.color.darker_gray);
+        // retrieve data from firebase
+        playersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()) {
+                    // if database doesn't exist, creates one with default value (false)
+                    playersRef.setValue(check);
+                    return;
+                }
+
+                int count = 1;
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Boolean current = ds.getValue(Boolean.class);
+                    check.put(Integer.toString(count), current);
+                    TextView currentTxt = findViewById(id_list.get(Integer.toString(count)));
+                    if (check.get(Integer.toString(count))) {
+                        currentTxt.setBackgroundResource(R.drawable.checkmark);
+                    } else {
+                        currentTxt.setBackgroundResource(R.color.darker_gray);
+                    }
+                    count++;
+                }
+                saveMap(check);
             }
-        }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
     public void isClicked(View v) {
-//        Toast.makeText(this, "저장되었습니다.", Toast.LENGTH_SHORT).show();
-        v.setBackgroundDrawable(getResources().getDrawable(R.drawable.checkmark));
-        toggleCheckBox(v.getTag().toString(), v);
-    }
-
-    public void toggleCheckBox(String date, View v) {
+        String date = v.getTag().toString();
         if (check.get(date)) {
             check.put(date, false);
+            playersRef.child(date).setValue(false);
             v.setBackgroundResource(R.color.darker_gray);
         } else {
             check.put(date, true);
+            playersRef.child(date).setValue(true);
             v.setBackgroundResource(R.drawable.checkmark);
         }
         saveMap(check);
@@ -135,7 +165,7 @@ public class Track08 extends AppCompatActivity {
         }
     }
 
-    public Map<String, Boolean> loadMap() {
+    public void loadMap() {
         SharedPreferences pSharedPref = getApplicationContext().getSharedPreferences("progress_08", Context.MODE_PRIVATE);
         try {
             if (pSharedPref != null) {
@@ -151,19 +181,20 @@ public class Track08 extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return check;
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         saveMap(check);
+        playersRef.setValue(check);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         saveMap(check);
+        playersRef.setValue(check);
     }
-
 }
+
