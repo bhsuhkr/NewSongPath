@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -19,6 +20,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.newsong.newsongtime.R;
 
 import org.json.JSONObject;
@@ -843,6 +846,9 @@ public class servingFragement extends Fragment {
     private HorizontalScrollView horizontalScrollView;
     private StringBuilder builder;
     private String htmlContentInStringFormat;
+    private String androidId;
+    private DatabaseReference rootRef;
+    private DatabaseReference playersRef;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -853,7 +859,9 @@ public class servingFragement extends Fragment {
         servingFragement.JsoupAsyncTask jsoupAsyncTask = new servingFragement.JsoupAsyncTask();
         jsoupAsyncTask.execute();
 
-        // Get current time (format: MM_dd)
+        androidId = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
+        rootRef = FirebaseDatabase.getInstance().getReference().child("Track").child(androidId);
+
         currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
 
         handWrite = root.findViewById(R.id.saveBtn);
@@ -864,6 +872,8 @@ public class servingFragement extends Fragment {
                 loadMap(check, current[0]);
                 check.put(current[1], true);
                 saveMap(check, current[0]);
+                playersRef = rootRef.child(current[0]);
+                playersRef.setValue(check);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle("기록 완료");
@@ -892,6 +902,8 @@ public class servingFragement extends Fragment {
                 loadMap(check, current[0]);
                 check.put(current[1], true);
                 saveMap(check, current[0]);
+                playersRef = rootRef.child(current[0]);
+                playersRef.setValue(check);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle("기록 완료");

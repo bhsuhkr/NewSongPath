@@ -106,7 +106,7 @@ public class Track08 extends AppCompatActivity {
 
         // initialize map
         rootRef = FirebaseDatabase.getInstance().getReference();
-        playersRef = rootRef.child("Track").child(androidId).child("August");
+        playersRef = rootRef.child("Track").child(androidId).child("08");
 
         // retrieve data from firebase
         playersRef.addValueEventListener(new ValueEventListener() {

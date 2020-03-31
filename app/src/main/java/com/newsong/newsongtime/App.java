@@ -39,18 +39,18 @@ public class App extends Application {
 
     String androidId;
     static Map<String, Integer> progressBar = new HashMap<String, Integer>() {{
-        put("January", 0);
-        put("February", 0);
-        put("March", 0);
-        put("April", 0);
-        put("May", 0);
-        put("June", 0);
-        put("July", 0);
-        put("August", 0);
-        put("September", 0);
-        put("October", 0);
-        put("November", 0);
-        put("December", 0);
+        put("01", 0);
+        put("02", 0);
+        put("03", 0);
+        put("04", 0);
+        put("05", 0);
+        put("06", 0);
+        put("07", 0);
+        put("08", 0);
+        put("09", 0);
+        put("10", 0);
+        put("11", 0);
+        put("12", 0);
     }};
 
     public static Map<String, Boolean> check31 = new HashMap<String, Boolean>() {{
@@ -186,7 +186,7 @@ public class App extends Application {
     }
 
     private void createListenerFor12Months() {
-        playersRef1 = rootRef.child("January");
+        playersRef1 = rootRef.child("01");
         playersRef1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -200,7 +200,7 @@ public class App extends Application {
                         progress++;
                     }
                 }
-                progressBar.put("January", progress);
+                progressBar.put("01", progress);
                 saveMap(progressBar);
             }
 
@@ -209,7 +209,7 @@ public class App extends Application {
             }
         });
 
-        playersRef2 = rootRef.child("February");
+        playersRef2 = rootRef.child("02");
         playersRef2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -223,7 +223,7 @@ public class App extends Application {
                         progress++;
                     }
                 }
-                progressBar.put("February", progress);
+                progressBar.put("02", progress);
                 saveMap(progressBar);
             }
 
@@ -232,7 +232,7 @@ public class App extends Application {
             }
         });
 
-        playersRef3 = rootRef.child("March");
+        playersRef3 = rootRef.child("03");
         playersRef3.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -246,7 +246,7 @@ public class App extends Application {
                         progress++;
                     }
                 }
-                progressBar.put("March", progress);
+                progressBar.put("03", progress);
                 saveMap(progressBar);
             }
 
@@ -255,7 +255,7 @@ public class App extends Application {
             }
         });
 
-        playersRef4 = rootRef.child("April");
+        playersRef4 = rootRef.child("04");
         playersRef4.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -269,7 +269,7 @@ public class App extends Application {
                         progress++;
                     }
                 }
-                progressBar.put("April", progress);
+                progressBar.put("04", progress);
                 saveMap(progressBar);
             }
 
@@ -278,7 +278,7 @@ public class App extends Application {
             }
         });
 
-        playersRef5 = rootRef.child("May");
+        playersRef5 = rootRef.child("05");
         playersRef5.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -292,7 +292,7 @@ public class App extends Application {
                         progress++;
                     }
                 }
-                progressBar.put("May", progress);
+                progressBar.put("05", progress);
                 saveMap(progressBar);
             }
 
@@ -301,7 +301,7 @@ public class App extends Application {
             }
         });
 
-        playersRef6 = rootRef.child("June");
+        playersRef6 = rootRef.child("06");
         playersRef6.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -315,7 +315,7 @@ public class App extends Application {
                         progress++;
                     }
                 }
-                progressBar.put("June", progress);
+                progressBar.put("06", progress);
                 saveMap(progressBar);
             }
 
@@ -324,7 +324,7 @@ public class App extends Application {
             }
         });
 
-        playersRef7 = rootRef.child("July");
+        playersRef7 = rootRef.child("07");
         playersRef7.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -338,7 +338,7 @@ public class App extends Application {
                         progress++;
                     }
                 }
-                progressBar.put("July", progress);
+                progressBar.put("07", progress);
                 saveMap(progressBar);
             }
 
@@ -347,7 +347,7 @@ public class App extends Application {
             }
         });
 
-        playersRef8 = rootRef.child("August");
+        playersRef8 = rootRef.child("08");
         playersRef8.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -361,7 +361,7 @@ public class App extends Application {
                         progress++;
                     }
                 }
-                progressBar.put("August", progress);
+                progressBar.put("08", progress);
                 saveMap(progressBar);
             }
 
@@ -370,7 +370,7 @@ public class App extends Application {
             }
         });
 
-        playersRef9 = rootRef.child("September");
+        playersRef9 = rootRef.child("09");
         playersRef9.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -384,7 +384,7 @@ public class App extends Application {
                         progress++;
                     }
                 }
-                progressBar.put("September", progress);
+                progressBar.put("09", progress);
                 saveMap(progressBar);
             }
 
@@ -393,7 +393,7 @@ public class App extends Application {
             }
         });
 
-        playersRef10 = rootRef.child("October");
+        playersRef10 = rootRef.child("10");
         playersRef10.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -407,7 +407,7 @@ public class App extends Application {
                         progress++;
                     }
                 }
-                progressBar.put("October", progress);
+                progressBar.put("10", progress);
                 saveMap(progressBar);
             }
 
@@ -416,7 +416,7 @@ public class App extends Application {
             }
         });
 
-        playersRef11 = rootRef.child("November");
+        playersRef11 = rootRef.child("11");
         playersRef11.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -430,7 +430,7 @@ public class App extends Application {
                         progress++;
                     }
                 }
-                progressBar.put("November", progress);
+                progressBar.put("11", progress);
                 saveMap(progressBar);
             }
 
@@ -439,7 +439,7 @@ public class App extends Application {
             }
         });
 
-        playersRef12 = rootRef.child("December");
+        playersRef12 = rootRef.child("12");
         playersRef12.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -453,7 +453,7 @@ public class App extends Application {
                         progress++;
                     }
                 }
-                progressBar.put("December", progress);
+                progressBar.put("12", progress);
                 saveMap(progressBar);
             }
 

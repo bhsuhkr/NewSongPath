@@ -33,19 +33,6 @@ import java.util.Map;
 
 public class TrackActivity extends AppCompatActivity {
 
-    Map<String, Boolean> check_1 = new HashMap<String, Boolean>();
-    Map<String, Boolean> check_2 = new HashMap<String, Boolean>();
-    Map<String, Boolean> check_3 = new HashMap<String, Boolean>();
-    Map<String, Boolean> check_4 = new HashMap<String, Boolean>();
-    Map<String, Boolean> check_5 = new HashMap<String, Boolean>();
-    Map<String, Boolean> check_6 = new HashMap<String, Boolean>();
-    Map<String, Boolean> check_7 = new HashMap<String, Boolean>();
-    Map<String, Boolean> check_8 = new HashMap<String, Boolean>();
-    Map<String, Boolean> check_9 = new HashMap<String, Boolean>();
-    Map<String, Boolean> check_10 = new HashMap<String, Boolean>();
-    Map<String, Boolean> check_11 = new HashMap<String, Boolean>();
-    Map<String, Boolean> check_12 = new HashMap<String, Boolean>();
-
     private TextView track1;
     private TextView track2;
     private TextView track3;
@@ -73,18 +60,18 @@ public class TrackActivity extends AppCompatActivity {
     private ProgressBar progressBar12;
 
     Map<String, Integer> progressList = new HashMap<String, Integer>() {{
-        put("January", 0);
-        put("February", 0);
-        put("March", 0);
-        put("April", 0);
-        put("May", 0);
-        put("June", 0);
-        put("July", 0);
-        put("August", 0);
-        put("September", 0);
-        put("October", 0);
-        put("November", 0);
-        put("December", 0);
+        put("01", 0);
+        put("02", 0);
+        put("03", 0);
+        put("04", 0);
+        put("05", 0);
+        put("06", 0);
+        put("07", 0);
+        put("08", 0);
+        put("09", 0);
+        put("10", 0);
+        put("11", 0);
+        put("12", 0);
     }};
 
     @Override
@@ -209,62 +196,62 @@ public class TrackActivity extends AppCompatActivity {
 
         progressBar1 = findViewById(R.id.progressBar1);
         progressBar1.setMax(31);
-        progressBar1.setProgress(progressList.get("January"));
+        progressBar1.setProgress(progressList.get("01"));
         progressBar1.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar2 = findViewById(R.id.progressBar2);
         progressBar2.setMax(29);
-        progressBar2.setProgress(progressList.get("February"));
+        progressBar2.setProgress(progressList.get("02"));
         progressBar2.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar3 = findViewById(R.id.progressBar3);
         progressBar3.setMax(31);
-        progressBar3.setProgress(progressList.get("March"));
+        progressBar3.setProgress(progressList.get("03"));
         progressBar3.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar4 = findViewById(R.id.progressBar4);
         progressBar4.setMax(30);
-        progressBar4.setProgress(progressList.get("April"));
+        progressBar4.setProgress(progressList.get("04"));
         progressBar4.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar5 = findViewById(R.id.progressBar5);
         progressBar5.setMax(31);
-        progressBar5.setProgress(progressList.get("May"));
+        progressBar5.setProgress(progressList.get("05"));
         progressBar5.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar6 = findViewById(R.id.progressBar6);
         progressBar6.setMax(30);
-        progressBar6.setProgress(progressList.get("June"));
+        progressBar6.setProgress(progressList.get("06"));
         progressBar6.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar7 = findViewById(R.id.progressBar7);
         progressBar7.setMax(31);
-        progressBar7.setProgress(progressList.get("July"));
+        progressBar7.setProgress(progressList.get("07"));
         progressBar7.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar8 = findViewById(R.id.progressBar8);
         progressBar8.setMax(31);
-        progressBar8.setProgress(progressList.get("August"));
+        progressBar8.setProgress(progressList.get("08"));
         progressBar8.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar9 = findViewById(R.id.progressBar9);
         progressBar9.setMax(30);
-        progressBar9.setProgress(progressList.get("September"));
+        progressBar9.setProgress(progressList.get("09"));
         progressBar9.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar10 = findViewById(R.id.progressBar10);
         progressBar10.setMax(31);
-        progressBar10.setProgress(progressList.get("October"));
+        progressBar10.setProgress(progressList.get("10"));
         progressBar10.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar11 = findViewById(R.id.progressBar11);
         progressBar11.setMax(30);
-        progressBar11.setProgress(progressList.get("November"));
+        progressBar11.setProgress(progressList.get("11"));
         progressBar11.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar12 = findViewById(R.id.progressBar12);
         progressBar12.setMax(31);
-        progressBar12.setProgress(progressList.get("December"));
+        progressBar12.setProgress(progressList.get("12"));
         progressBar12.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
     }
 
@@ -302,51 +289,51 @@ public class TrackActivity extends AppCompatActivity {
         }
 
         progressBar1.setMax(31);
-        progressBar1.setProgress(progressList.get("January"));
+        progressBar1.setProgress(progressList.get("01"));
         progressBar1.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar2.setMax(29);
-        progressBar2.setProgress(progressList.get("February"));
+        progressBar2.setProgress(progressList.get("02"));
         progressBar2.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar3.setMax(31);
-        progressBar3.setProgress(progressList.get("March"));
+        progressBar3.setProgress(progressList.get("03"));
         progressBar3.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar4.setMax(30);
-        progressBar4.setProgress(progressList.get("April"));
+        progressBar4.setProgress(progressList.get("04"));
         progressBar4.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar5.setMax(31);
-        progressBar5.setProgress(progressList.get("May"));
+        progressBar5.setProgress(progressList.get("05"));
         progressBar5.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar6.setMax(30);
-        progressBar6.setProgress(progressList.get("June"));
+        progressBar6.setProgress(progressList.get("06"));
         progressBar6.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar7.setMax(31);
-        progressBar7.setProgress(progressList.get("July"));
+        progressBar7.setProgress(progressList.get("07"));
         progressBar7.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar8.setMax(31);
-        progressBar8.setProgress(progressList.get("August"));
+        progressBar8.setProgress(progressList.get("08"));
         progressBar8.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar9.setMax(30);
-        progressBar9.setProgress(progressList.get("September"));
+        progressBar9.setProgress(progressList.get("09"));
         progressBar9.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar10.setMax(31);
-        progressBar10.setProgress(progressList.get("October"));
+        progressBar10.setProgress(progressList.get("10"));
         progressBar10.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar11.setMax(30);
-        progressBar11.setProgress(progressList.get("November"));
+        progressBar11.setProgress(progressList.get("11"));
         progressBar11.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         progressBar12.setMax(31);
-        progressBar12.setProgress(progressList.get("December"));
+        progressBar12.setProgress(progressList.get("12"));
         progressBar12.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
     }
 
