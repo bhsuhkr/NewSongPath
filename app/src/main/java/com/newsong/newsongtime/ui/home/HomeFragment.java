@@ -36,6 +36,7 @@ public class HomeFragment extends Fragment {
 
     private static final String url = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2562&lef=&sublef=&page=1&search_select=&search_text=";
     private static final String homepageURL = "http://www.newsongdallas.org/";
+    private static final String familyURL = "https://url.kr/NlTV9c";
     String getUrl;
     String htmlContentInStringFormat;
     StringBuilder builder;
@@ -47,7 +48,7 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private TextView textViewHtmlDocument;
     private ImageView imageViewHtmlDocument;
-    private Button sermonBtn, homepageBtn, outreachBtn, jooboBtn, trackBtn;
+    private Button sermonBtn, homepageBtn, outreachBtn, jooboBtn, trackBtn, familyBtn;
     private Dialog WebDialog1;
     private WebView URL1;
 
@@ -73,6 +74,15 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        familyBtn = root.findViewById(R.id.familyBtn);
+        familyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(familyURL));
+                startActivity(intent);
+            }
+        });
+
         homepageBtn = root.findViewById(R.id.homepageBtn);
         homepageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +91,7 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
         outreachBtn = root.findViewById(R.id.outreachBtn);
         outreachBtn.setOnClickListener(new View.OnClickListener() {
             @Override
