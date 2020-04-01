@@ -26,15 +26,15 @@ import java.util.Map;
 public class Track06 extends AppCompatActivity {
 
     private static final Map<String, Integer> id_list = new HashMap<String, Integer>() {{
-        put("01", R.id.day_1);
-        put("02", R.id.day_2);
-        put("03", R.id.day_3);
-        put("04", R.id.day_4);
-        put("05", R.id.day_5);
-        put("06", R.id.day_6);
-        put("07", R.id.day_7);
-        put("08", R.id.day_8);
-        put("09", R.id.day_9);
+        put("1", R.id.day_1);
+        put("2", R.id.day_2);
+        put("3", R.id.day_3);
+        put("4", R.id.day_4);
+        put("5", R.id.day_5);
+        put("6", R.id.day_6);
+        put("7", R.id.day_7);
+        put("8", R.id.day_8);
+        put("9", R.id.day_9);
         put("10", R.id.day_10);
         put("11", R.id.day_11);
         put("12", R.id.day_12);
@@ -58,15 +58,15 @@ public class Track06 extends AppCompatActivity {
         put("30", R.id.day_30);
     }};
     public static Map<String, Boolean> check = new HashMap<String, Boolean>() {{
-        put("01", false);
-        put("02", false);
-        put("03", false);
-        put("04", false);
-        put("05", false);
-        put("06", false);
-        put("07", false);
-        put("08", false);
-        put("09", false);
+        put("1", false);
+        put("2", false);
+        put("3", false);
+        put("4", false);
+        put("5", false);
+        put("6", false);
+        put("7", false);
+        put("8", false);
+        put("9", false);
         put("10", false);
         put("11", false);
         put("12", false);
@@ -119,10 +119,9 @@ public class Track06 extends AppCompatActivity {
                 int count = 1;
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Boolean current = ds.getValue(Boolean.class);
-                    String stringCount = (count < 10) ? "0" + count : "" + count;
-                    check.put(stringCount, current);
-                    TextView currentTxt = findViewById(id_list.get(stringCount));
-                    if (check.get(stringCount)) {
+                    check.put(Integer.toString(count), current);
+                    TextView currentTxt = findViewById(id_list.get(Integer.toString(count)));
+                    if (check.get(Integer.toString(count))) {
                         currentTxt.setBackgroundResource(R.drawable.checkmark);
                     } else {
                         currentTxt.setBackgroundResource(R.color.darker_gray);

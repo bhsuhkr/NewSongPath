@@ -54,15 +54,15 @@ public class App extends Application {
     }};
 
     public static Map<String, Boolean> check31 = new HashMap<String, Boolean>() {{
-        put("01", false);
-        put("02", false);
-        put("03", false);
-        put("04", false);
-        put("05", false);
-        put("06", false);
-        put("07", false);
-        put("08", false);
-        put("09", false);
+        put("1", false);
+        put("2", false);
+        put("3", false);
+        put("4", false);
+        put("5", false);
+        put("6", false);
+        put("7", false);
+        put("8", false);
+        put("9", false);
         put("10", false);
         put("11", false);
         put("12", false);
@@ -87,15 +87,15 @@ public class App extends Application {
         put("31", false);
     }};
     public static Map<String, Boolean> check30 = new HashMap<String, Boolean>() {{
-        put("01", false);
-        put("02", false);
-        put("03", false);
-        put("04", false);
-        put("05", false);
-        put("06", false);
-        put("07", false);
-        put("08", false);
-        put("09", false);
+        put("1", false);
+        put("2", false);
+        put("3", false);
+        put("4", false);
+        put("5", false);
+        put("6", false);
+        put("7", false);
+        put("8", false);
+        put("9", false);
         put("10", false);
         put("11", false);
         put("12", false);
@@ -119,15 +119,15 @@ public class App extends Application {
         put("30", false);
     }};
     public static Map<String, Boolean> check29 = new HashMap<String, Boolean>() {{
-        put("01", false);
-        put("02", false);
-        put("03", false);
-        put("04", false);
-        put("05", false);
-        put("06", false);
-        put("07", false);
-        put("08", false);
-        put("09", false);
+        put("1", false);
+        put("2", false);
+        put("3", false);
+        put("4", false);
+        put("5", false);
+        put("6", false);
+        put("7", false);
+        put("8", false);
+        put("9", false);
         put("10", false);
         put("11", false);
         put("12", false);
