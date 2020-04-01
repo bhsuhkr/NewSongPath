@@ -81,16 +81,18 @@
                 android:layout_height="5dp" />
 
             <Button
-                android:id="@+id/track_btn"
+                android:id="@+id/familyBtn"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:background="@drawable/writing"
+                android:background="@drawable/family"
                 android:fontFamily="@font/sangsang"
-                android:text="말씀 기록하기"
+                android:text="뉴송굿뉴스\n가정예배 안내지"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp" />
+
+
 
             <Space
                 android:layout_width="match_parent"
@@ -170,6 +172,22 @@
                     android:textColor="#FFFFFF"
                     android:textSize="30sp" />
             </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <Button
+                android:id="@+id/track_btn"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/writing"
+                android:fontFamily="@font/sangsang"
+                android:text="PATH 기록하기"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp" />
 
             <Space
                 android:layout_width="match_parent"
