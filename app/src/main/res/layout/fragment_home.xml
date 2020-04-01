@@ -184,7 +184,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/writing"
                 android:fontFamily="@font/sangsang"
-                android:text="말씀 기록하기"
+                android:text="PATH 기록하기"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp" />

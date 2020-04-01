@@ -874,7 +874,8 @@ public class sendingFragment extends Fragment {
                 check.put(current[1], true);
                 saveMap(check, current[0]);
                 playersRef = rootRef.child(current[0]);
-                playersRef.setValue(check);
+                int removeZero = Integer.parseInt(current[1]);
+                playersRef.child(Integer.toString(removeZero)).setValue(true);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle("기록 완료");
@@ -904,7 +905,8 @@ public class sendingFragment extends Fragment {
                 check.put(current[1], true);
                 saveMap(check, current[0]);
                 playersRef = rootRef.child(current[0]);
-                playersRef.setValue(check);
+                int removeZero = Integer.parseInt(current[1]);
+                playersRef.child(Integer.toString(removeZero)).setValue(true);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle("기록 완료");
