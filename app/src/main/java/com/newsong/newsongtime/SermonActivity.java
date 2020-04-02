@@ -1,5 +1,6 @@
 package com.newsong.newsongtime;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -68,8 +69,9 @@ public class SermonActivity extends YouTubeBaseActivity implements YouTubePlayer
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.webpage);
-        MainActivity ms = new MainActivity();
-        youtubeLink = ms.tempID;
+
+        Intent i = getIntent();
+        youtubeLink = i.getStringExtra("YoutubeLink");
         YouTubePlayerView youTubeView;
 
         /** Initializing YouTube Player View **/
@@ -77,20 +79,6 @@ public class SermonActivity extends YouTubeBaseActivity implements YouTubePlayer
         youTubeView.initialize(API_KEY, this);
     }
 
-/*
-        //리스너 등록부분
-        listener = new YouTubePlayer.OnInitializedListener(){
-            //초기화 성공시
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("c27XPrCmCgQ");//url의 맨 뒷부분 ID값만 넣으면 됨
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-            }
-        };
-*/
 
     @Override
     public void onInitializationFailure(Provider provider, YouTubeInitializationResult result) {
@@ -112,4 +100,6 @@ public class SermonActivity extends YouTubeBaseActivity implements YouTubePlayer
             }
         }
     }
+
+
 }

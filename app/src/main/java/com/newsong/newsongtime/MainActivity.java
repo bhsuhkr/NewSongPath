@@ -2,10 +2,6 @@ package com.newsong.newsongtime;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
@@ -18,42 +14,13 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-
-    private static final String url = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2562&lef=&sublef=&page=1&search_select=&search_text=";
-    Map<String, String> uriList = new HashMap<String, String>();
-    StringBuilder builder;
-    String tempURL = "";
-    String[] splitYoutube;
-    String tempID;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +29,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
-
-
         createNotificationChannel();
-
-        JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
-        jsoupAsyncTask.execute();
-        builder = new StringBuilder();
 
         // Firebase
         FirebaseInstanceId.getInstance().getInstanceId()
@@ -78,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
                         if (!task.isSuccessful()) {
                             return;
                         }
-                        // Get new Instance ID token
-                        String token = task.getResult().getToken();
                     }
                 });
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
@@ -112,35 +71,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            try {
-                Document doc = Jsoup.connect(url).get();
-                Elements title = doc.select("div.sboard_cont_details > p"); //parent > child: child elements that descend directly from parent, e.g.
-
-                for (Element e : title) {
-                    if (e.text().contains("http")) {
-                        tempURL = e.text();
-                        splitYoutube = tempURL.split("=", 2);
-                        tempID = splitYoutube[1];
-                    } else {
-                        builder.append(e.text()).append("\n");
-                    }
-
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-    }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,12 @@ import com.newsong.newsongtime.TrackActivity;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -40,6 +46,9 @@ public class HomeFragment extends Fragment {
     private ImageView imageViewHtmlDocument;
     private Button sermonBtn, homepageBtn, outreachBtn, jooboBtn, trackBtn, familyBtn;
     Map<String, String> saveAnnouncement = new HashMap<String, String>();
+    String tempURL = "";
+    String[] splitYoutube;
+    String tempID;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -47,6 +56,8 @@ public class HomeFragment extends Fragment {
 
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
 
+        JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
+        jsoupAsyncTask.execute();
 
         loadAnnouncement();
         textViewHtmlDocument = root.findViewById(R.id.text_home);
@@ -59,7 +70,9 @@ public class HomeFragment extends Fragment {
         sermonBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), SermonActivity.class));
+                Intent intent = new Intent(getContext(), SermonActivity.class);
+                intent.putExtra("YoutubeLink", tempID);
+                startActivity(intent);
             }
         });
 
@@ -126,6 +139,36 @@ public class HomeFragment extends Fragment {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+
+    private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                Document doc = Jsoup.connect(url).get();
+                Elements title = doc.select("div.sboard_cont_details > p"); //parent > child: child elements that descend directly from parent, e.g.
+
+                for (Element e : title) {
+                    if (e.text().contains("http")) {
+                        tempURL = e.text();
+                        splitYoutube = tempURL.split("=", 2);
+                        tempID = splitYoutube[1];
+                    }
+
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 
