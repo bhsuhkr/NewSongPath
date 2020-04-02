@@ -3,9 +3,9 @@ package com.newsong.newsongtime.ui.sending;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -828,6 +826,7 @@ public class sendingFragment extends Fragment {
         put("12_31", "Malachi 3-4, Psalms 66, Proverbs 31");
     }};
     Map<String, Boolean> check = new HashMap<String, Boolean>();
+    Map<String, String> uriList = new HashMap<String, String>();
     private sendingViewModel sendingViewModel;
     private TextView sendingTextView;
     private TextView sendingQT_kor;
@@ -836,7 +835,6 @@ public class sendingFragment extends Fragment {
     private TextView sending_qt;
     private TextView sending_eng;
     private String currentDate;
-    private String currentDateWithYear;
     private ImageView image1;
     private ImageView image2;
     private ImageView image3;
@@ -846,61 +844,18 @@ public class sendingFragment extends Fragment {
     private String androidId;
     private DatabaseReference rootRef;
     private DatabaseReference playersRef;
-    static String uriConvert = "";
-    StorageReference savingReference;
-    StorageReference storageReference;
-    FirebaseStorage storage;
+    static String returnUri = "로딩중...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        sendingViewModel =
-                ViewModelProviders.of(this).get(sendingViewModel.class);
+        sendingViewModel = ViewModelProviders.of(this).get(sendingViewModel.class);
         View root = inflater.inflate(R.layout.fragment_sending, container, false);
 
         currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
-        currentDateWithYear = new SimpleDateFormat("MM_dd_yyyy", Locale.getDefault()).format(new Date());
+
         sendingQT_kor = root.findViewById(R.id.text_sending);
-
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
-//        savingReference = storageReference.child(currentDateWithYear + "_sending.txt");
-        savingReference = storageReference.child("announcement.txt");
-        savingReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                uriConvert = uri.toString();
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-            }
-        });
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(350);
-                    URL url = new URL(uriConvert);
-                    BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-
-                    String inputLine;
-                    String sum = "";
-                    while ((inputLine = in.readLine()) != null)
-                        sum += inputLine + "\n";
-                    in.close();
-                    sum += "\n\n\n\n";
-                    sendingQT_kor.setText(sum);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        thread.start();
+        loadUri();
 
         androidId = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
         rootRef = FirebaseDatabase.getInstance().getReference().child("Track").child(androidId);
@@ -1058,6 +1013,46 @@ public class sendingFragment extends Fragment {
             e.printStackTrace();
         }
         return check;
+    }
+
+    public void loadUri() {
+        SharedPreferences pSharedPref = getContext().getSharedPreferences("uriList", Context.MODE_PRIVATE);
+        try {
+            if (pSharedPref != null) {
+                String jsonString = pSharedPref.getString("Track_Uri", (new JSONObject()).toString());
+                JSONObject jsonObject = new JSONObject(jsonString);
+                Iterator<String> keysItr = jsonObject.keys();
+                while (keysItr.hasNext()) {
+                    String key = keysItr.next();
+                    String value = (String) jsonObject.get(key);
+                    uriList.put(key, value);
+                }
+
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            URL url = new URL(uriList.get("sending"));
+                            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+
+                            String inputLine;
+                            returnUri = "";
+                            while ((inputLine = in.readLine()) != null)
+                                returnUri += inputLine + "\n";
+                            in.close();
+                            returnUri += "\n\n\n\n";
+                            sendingQT_kor.setText(returnUri);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                Thread.currentThread().getPriority();
+                thread.start();
+            }
+        } catch (Exception e) {
+        }
     }
 
     public void saveMap(Map<String, Boolean> inputMap, String month) {

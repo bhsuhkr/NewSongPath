@@ -828,6 +828,7 @@ public class servingFragement extends Fragment {
         put("12_31", "Job 23-24, Psalms 127");
     }};
     Map<String, Boolean> check = new HashMap<String, Boolean>();
+    Map<String, String> uriList = new HashMap<String, String>();
     private servingViewModel notificationsViewModel;
     private TextView servingTextView;
     private TextView servingQT_kor;
@@ -836,7 +837,6 @@ public class servingFragement extends Fragment {
     private TextView serving_qt;
     private TextView serving_eng;
     private String currentDate;
-    private String currentDateWithYear;
     private ImageView image1;
     private ImageView image2;
     private ImageView image3;
@@ -845,60 +845,17 @@ public class servingFragement extends Fragment {
     private String androidId;
     private DatabaseReference rootRef;
     private DatabaseReference playersRef;
-    static String uriConvert = "";
-    StorageReference savingReference;
-    StorageReference storageReference;
-    FirebaseStorage storage;
+    static String returnUri = "로딩중...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(servingViewModel.class);
+        notificationsViewModel = ViewModelProviders.of(this).get(servingViewModel.class);
         View root = inflater.inflate(R.layout.fragment_serving, container, false);
 
         currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
-        currentDateWithYear = new SimpleDateFormat("MM_dd_yyyy", Locale.getDefault()).format(new Date());
+
         servingQT_kor = root.findViewById(R.id.text_serving);
-
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
-//        savingReference = storageReference.child(currentDateWithYear + "_serving.txt");
-        savingReference = storageReference.child("announcement.txt");
-        savingReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                uriConvert = uri.toString();
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-            }
-        });
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(350);
-                    URL url = new URL(uriConvert);
-                    BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-
-                    String inputLine;
-                    String sum = "";
-                    while ((inputLine = in.readLine()) != null)
-                        sum += inputLine + "\n";
-                    in.close();
-                    sum += "\n\n\n\n";
-                    servingQT_kor.setText(sum);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        thread.start();
+        loadUri();
 
         androidId = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
         rootRef = FirebaseDatabase.getInstance().getReference().child("Track").child(androidId);
@@ -1057,6 +1014,48 @@ public class servingFragement extends Fragment {
         }
         return check;
     }
+
+
+    public void loadUri() {
+        SharedPreferences pSharedPref = getContext().getSharedPreferences("uriList", Context.MODE_PRIVATE);
+        try {
+            if (pSharedPref != null) {
+                String jsonString = pSharedPref.getString("Track_Uri", (new JSONObject()).toString());
+                JSONObject jsonObject = new JSONObject(jsonString);
+                Iterator<String> keysItr = jsonObject.keys();
+                while (keysItr.hasNext()) {
+                    String key = keysItr.next();
+                    String value = (String) jsonObject.get(key);
+                    uriList.put(key, value);
+                }
+
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            URL url = new URL(uriList.get("serving"));
+                            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+
+                            String inputLine;
+                            returnUri = "";
+                            while ((inputLine = in.readLine()) != null)
+                                returnUri += inputLine + "\n";
+                            in.close();
+                            returnUri += "\n\n\n\n";
+                            servingQT_kor.setText(returnUri);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                Thread.currentThread().getPriority();
+                thread.start();
+            }
+        } catch (Exception e) {
+        }
+    }
+
 
     public void saveMap(Map<String, Boolean> inputMap, String month) {
         SharedPreferences pSharedPref = getContext().getSharedPreferences("progress_" + month, Context.MODE_PRIVATE);
