@@ -3,7 +3,7 @@ package com.newsong.newsongtime.ui.saving;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.LayoutInflater;
@@ -17,17 +17,19 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.newsong.newsongtime.R;
 
 import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -39,8 +41,6 @@ import java.util.TimerTask;
 
 public class savingFragment extends Fragment {
 
-    private static final String url_kor_QT = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2604&lef=&sublef=&page=1&search_select=&search_text=";
-    private static final String url_eng_QT = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2604&lef=&sublef=&page=1&search_select=&search_text=";
     private static final Map<String, String> savingSchedule_kor = new HashMap<String, String>() {{
         // Date format should be MM_dd
         // 2020 년
@@ -836,28 +836,70 @@ public class savingFragment extends Fragment {
     private TextView saving_qt;
     private TextView saving_eng;
     private String currentDate;
+    private String currentDateWithYear;
     private ImageView image1;
     private ImageView image2;
     private ImageView image3;
     private HorizontalScrollView horizontalScrollView;
-    private StringBuilder builder;
-    private String htmlContentInStringFormat;
     private String androidId;
     private DatabaseReference rootRef;
     private DatabaseReference playersRef;
+    static String uriConvert = "";
+    StorageReference savingReference;
+    StorageReference storageReference;
+    FirebaseStorage storage;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         savingViewModel = ViewModelProviders.of(this).get(savingViewModel.class);
         View root = inflater.inflate(R.layout.fragment_saving, container, false);
 
-        savingFragment.JsoupAsyncTask jsoupAsyncTask = new savingFragment.JsoupAsyncTask();
-        jsoupAsyncTask.execute();
+        currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
+        currentDateWithYear = new SimpleDateFormat("MM_dd_yyyy", Locale.getDefault()).format(new Date());
+        savingQT_kor = root.findViewById(R.id.text_saving);
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+        savingReference = storageReference.child(currentDateWithYear + "_saving.txt");
+        savingReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                uriConvert = uri.toString();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+            }
+        });
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(350);
+                    URL url = new URL(uriConvert);
+                    BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+
+                    String inputLine;
+                    String sum = "";
+                    while ((inputLine = in.readLine()) != null)
+                        sum += inputLine + "\n";
+                    in.close();
+                    sum += "\n\n\n\n";
+                    savingQT_kor.setText(sum);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
+
 
         androidId = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
         rootRef = FirebaseDatabase.getInstance().getReference().child("Track").child(androidId);
-
-        currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
 
         handWrite = root.findViewById(R.id.saveBtn);
         handWrite.setOnClickListener(new View.OnClickListener() {
@@ -932,8 +974,6 @@ public class savingFragment extends Fragment {
         image3 = root.findViewById(R.id.imageView_saving3);
         horizontalScrollView = root.findViewById(R.id.horizontalScroll_saving);
 
-        savingQT_kor = root.findViewById(R.id.text_saving);
-        builder = new StringBuilder();
 
         saving_kor = root.findViewById(R.id.saving_korean);
         saving_kor.setOnClickListener(new View.OnClickListener() {
@@ -993,6 +1033,7 @@ public class savingFragment extends Fragment {
         return root;
     }
 
+
     public Map<String, Boolean> loadMap(Map<String, Boolean> check, String month) {
         SharedPreferences pSharedPref = getContext().getSharedPreferences("progress_" + month, Context.MODE_PRIVATE);
         try {
@@ -1012,6 +1053,7 @@ public class savingFragment extends Fragment {
         return check;
     }
 
+
     public void saveMap(Map<String, Boolean> inputMap, String month) {
         SharedPreferences pSharedPref = getContext().getSharedPreferences("progress_" + month, Context.MODE_PRIVATE);
         if (pSharedPref != null) {
@@ -1024,31 +1066,4 @@ public class savingFragment extends Fragment {
         }
     }
 
-    private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        protected Void doInBackground(Void... params) {
-            try {
-                Document doc = Jsoup.connect(url_kor_QT).get();
-                Elements title = doc.select("div.sboard_cont_details > p"); //parent > child: child elements that descend directly from parent, e.g.
-
-                for (Element e : title) {
-                    builder.append(e.text()).append("\n");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            htmlContentInStringFormat = builder.toString();
-            savingQT_kor.setText(htmlContentInStringFormat);
-        }
-    }
 }

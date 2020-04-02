@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     String[] splitYoutube;
     String tempID;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
@@ -64,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 });
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
 
-
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -74,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
     }
+
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
             notificationManager.createNotificationChannel(notificationChannel);
         }
     }
+
 
     private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
 
