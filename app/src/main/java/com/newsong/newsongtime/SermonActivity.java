@@ -82,7 +82,6 @@ public class SermonActivity extends YouTubeBaseActivity implements YouTubePlayer
 
     @Override
     public void onInitializationFailure(Provider provider, YouTubeInitializationResult result) {
-//            Toast.makeText(this, "Failured to Initialize!", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -100,6 +99,5 @@ public class SermonActivity extends YouTubeBaseActivity implements YouTubePlayer
             }
         }
     }
-
 
 }
