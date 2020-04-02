@@ -860,7 +860,8 @@ public class savingFragment extends Fragment {
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        savingReference = storageReference.child(currentDateWithYear + "_saving.txt");
+//        savingReference = storageReference.child(currentDateWithYear + "_saving.txt");
+        savingReference = storageReference.child("announcement.txt");
         savingReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
