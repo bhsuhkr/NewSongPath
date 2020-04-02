@@ -1,15 +1,13 @@
 package com.newsong.newsongtime.ui.home;
 
-import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,32 +23,23 @@ import com.newsong.newsongtime.SermonActivity;
 import com.newsong.newsongtime.TrackActivity;
 import com.squareup.picasso.Picasso;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import org.json.JSONObject;
 
-import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
     private static final String url = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2562&lef=&sublef=&page=1&search_select=&search_text=";
     private static final String homepageURL = "http://www.newsongdallas.org/";
     private static final String familyURL = "https://url.kr/NlTV9c";
-    String getUrl;
-    String htmlContentInStringFormat;
     StringBuilder builder;
-    String srcValue;
-    String tempURL = "";
-    String[] splitYoutube;
-    String youtubeID = ""; //https://www.youtube.com/watch?v=awmGw6MLdHQ
-    String tempID;
     private HomeViewModel homeViewModel;
     private TextView textViewHtmlDocument;
     private ImageView imageViewHtmlDocument;
     private Button sermonBtn, homepageBtn, outreachBtn, jooboBtn, trackBtn, familyBtn;
-    private Dialog WebDialog1;
-    private WebView URL1;
+    Map<String, String> saveAnnouncement = new HashMap<String, String>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -58,13 +47,13 @@ public class HomeFragment extends Fragment {
 
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
 
-        textViewHtmlDocument = root.findViewById(R.id.text_home);
-        imageViewHtmlDocument = root.findViewById(R.id.image_view);
-        textViewHtmlDocument.setMovementMethod(new ScrollingMovementMethod());
-        builder = new StringBuilder();
 
-        JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
-        jsoupAsyncTask.execute();
+        loadAnnouncement();
+        textViewHtmlDocument = root.findViewById(R.id.text_home);
+        textViewHtmlDocument.setText(saveAnnouncement.get("Announce"));
+        imageViewHtmlDocument = root.findViewById(R.id.image_view);
+        Picasso.get().load(saveAnnouncement.get("Picture")).into(imageViewHtmlDocument);
+
 
         sermonBtn = root.findViewById(R.id.sermonBtn);
         sermonBtn.setOnClickListener(new View.OnClickListener() {
@@ -121,43 +110,23 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            try {
-                Document doc = Jsoup.connect(url).get();
-                Elements title = doc.select("div.sboard_cont_details > p"); //parent > child: child elements that descend directly from parent, e.g.
-                Elements imagefile = doc.select("div.sboard_cont_details img[src]"); //parent > child: child elements that descend directly from parent, e.g.
-                for (Element e : title) {
-                    if (e.text().contains("http")) {
-                        tempURL = e.text();
-                        splitYoutube = tempURL.split("=", 2);
-                        tempID = splitYoutube[1];
-                    } else {
-                        builder.append(e.text()).append("\n");
-                    }
+    public void loadAnnouncement() {
+        SharedPreferences pSharedPref = getContext().getSharedPreferences("announcement", Context.MODE_PRIVATE);
+        builder = new StringBuilder();
+        try {
+            if (pSharedPref != null) {
+                String jsonString = pSharedPref.getString("announce_home", (new JSONObject()).toString());
+                JSONObject jsonObject = new JSONObject(jsonString);
+                Iterator<String> keysItr = jsonObject.keys();
+                while (keysItr.hasNext()) {
+                    String key = keysItr.next();
+                    String value = (String) jsonObject.get(key);
+                    saveAnnouncement.put(key, value);
                 }
-                for (Element e1 : imagefile) {
-                    getUrl = e1.absUrl("src");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            htmlContentInStringFormat = builder.toString();
-            textViewHtmlDocument.setText(htmlContentInStringFormat);
-            Picasso.get().load(getUrl).into(imageViewHtmlDocument);
-//            wb.loadUrl(tempURL); //"https://vimeo.com/381049225"
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+
 }

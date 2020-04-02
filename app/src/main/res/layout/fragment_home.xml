@@ -87,7 +87,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/family"
                 android:fontFamily="@font/sangsang"
-                android:text="뉴송굿뉴스\n가정예배 안내지"
+                android:text="뉴송 굿 뉴스\n가정예배 안내지"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp" />
@@ -191,7 +191,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="70dp" />
+                android:layout_height="60dp" />
 
         </LinearLayout>
     </ScrollView>

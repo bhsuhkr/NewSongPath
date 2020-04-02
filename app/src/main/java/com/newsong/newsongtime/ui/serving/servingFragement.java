@@ -3,12 +3,10 @@ package com.newsong.newsongtime.ui.serving;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
@@ -19,18 +17,19 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.newsong.newsongtime.R;
 
 import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -42,8 +41,6 @@ import java.util.TimerTask;
 
 public class servingFragement extends Fragment {
 
-    private static final String url_kor_QT = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2603&lef=&sublef=&page=1&search_select=&search_text=";
-    private static final String url_eng_QT = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2603&lef=&sublef=&page=1&search_select=&search_text=";
     private static final Map<String, String> servingSchedule_kor = new HashMap<String, String>() {{
         // Date format should be MM_dd
         // 2020 년
@@ -831,6 +828,7 @@ public class servingFragement extends Fragment {
         put("12_31", "Job 23-24, Psalms 127");
     }};
     Map<String, Boolean> check = new HashMap<String, Boolean>();
+    Map<String, String> uriList = new HashMap<String, String>();
     private servingViewModel notificationsViewModel;
     private TextView servingTextView;
     private TextView servingQT_kor;
@@ -844,25 +842,23 @@ public class servingFragement extends Fragment {
     private ImageView image3;
     private ImageView column;
     private HorizontalScrollView horizontalScrollView;
-    private StringBuilder builder;
-    private String htmlContentInStringFormat;
     private String androidId;
     private DatabaseReference rootRef;
     private DatabaseReference playersRef;
+    static String returnUri = "로딩중...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(servingViewModel.class);
+        notificationsViewModel = ViewModelProviders.of(this).get(servingViewModel.class);
         View root = inflater.inflate(R.layout.fragment_serving, container, false);
 
-        servingFragement.JsoupAsyncTask jsoupAsyncTask = new servingFragement.JsoupAsyncTask();
-        jsoupAsyncTask.execute();
+        currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
+
+        servingQT_kor = root.findViewById(R.id.text_serving);
+        loadUri();
 
         androidId = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
         rootRef = FirebaseDatabase.getInstance().getReference().child("Track").child(androidId);
-
-        currentDate = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
 
         handWrite = root.findViewById(R.id.saveBtn);
         handWrite.setOnClickListener(new View.OnClickListener() {
@@ -937,10 +933,6 @@ public class servingFragement extends Fragment {
         image3 = root.findViewById(R.id.imageView_serving3);
         horizontalScrollView = root.findViewById(R.id.horizontalScroll_serving);
         column = root.findViewById(R.id.serving_column);
-
-        servingQT_kor = root.findViewById(R.id.text_serving);
-        servingQT_kor.setMovementMethod(new ScrollingMovementMethod());
-        builder = new StringBuilder();
 
         serving_kor = root.findViewById(R.id.serving_korean);
         serving_kor.setOnClickListener(new View.OnClickListener() {
@@ -1023,6 +1015,48 @@ public class servingFragement extends Fragment {
         return check;
     }
 
+
+    public void loadUri() {
+        SharedPreferences pSharedPref = getContext().getSharedPreferences("uriList", Context.MODE_PRIVATE);
+        try {
+            if (pSharedPref != null) {
+                String jsonString = pSharedPref.getString("Track_Uri", (new JSONObject()).toString());
+                JSONObject jsonObject = new JSONObject(jsonString);
+                Iterator<String> keysItr = jsonObject.keys();
+                while (keysItr.hasNext()) {
+                    String key = keysItr.next();
+                    String value = (String) jsonObject.get(key);
+                    uriList.put(key, value);
+                }
+
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            URL url = new URL(uriList.get("serving"));
+                            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+
+                            String inputLine;
+                            returnUri = "";
+                            while ((inputLine = in.readLine()) != null)
+                                returnUri += inputLine + "\n";
+                            in.close();
+                            returnUri += "\n\n\n\n";
+                            servingQT_kor.setText(returnUri);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                Thread.currentThread().getPriority();
+                thread.start();
+            }
+        } catch (Exception e) {
+        }
+    }
+
+
     public void saveMap(Map<String, Boolean> inputMap, String month) {
         SharedPreferences pSharedPref = getContext().getSharedPreferences("progress_" + month, Context.MODE_PRIVATE);
         if (pSharedPref != null) {
@@ -1035,31 +1069,4 @@ public class servingFragement extends Fragment {
         }
     }
 
-    private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        protected Void doInBackground(Void... params) {
-            try {
-                Document doc = Jsoup.connect(url_kor_QT).get();
-                Elements title = doc.select("div.sboard_cont_details > p"); //parent > child: child elements that descend directly from parent, e.g.
-
-                for (Element e : title) {
-                    builder.append(e.text()).append("\n");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            htmlContentInStringFormat = builder.toString();
-            servingQT_kor.setText(htmlContentInStringFormat);
-        }
-    }
 }
