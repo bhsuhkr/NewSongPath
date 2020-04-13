@@ -3,8 +3,9 @@ package com.newsong.newsongtime.ui.home;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,38 +18,37 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.newsong.newsongtime.JooBoActivity;
 import com.newsong.newsongtime.OutreachActivity;
 import com.newsong.newsongtime.R;
 import com.newsong.newsongtime.SermonActivity;
 import com.newsong.newsongtime.TrackActivity;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
-    private static final String url = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2562&lef=&sublef=&page=1&search_select=&search_text=";
     private static final String homepageURL = "http://www.newsongdallas.org/";
     private static final String familyURL = "https://url.kr/NlTV9c";
-    StringBuilder builder;
     private HomeViewModel homeViewModel;
     private TextView textViewHtmlDocument;
     private ImageView imageViewHtmlDocument;
     private Button sermonBtn, homepageBtn, outreachBtn, jooboBtn, trackBtn, familyBtn;
-    Map<String, String> saveAnnouncement = new HashMap<String, String>();
-    String tempURL = "";
-    String[] splitYoutube;
+    Map<String, String> uriList = new HashMap<String, String>();
     String tempID;
+    String returnUri;
+    String returnUri2;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,14 +56,10 @@ public class HomeFragment extends Fragment {
 
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
 
-        JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
-        jsoupAsyncTask.execute();
 
-        loadAnnouncement();
         textViewHtmlDocument = root.findViewById(R.id.text_home);
-        textViewHtmlDocument.setText(saveAnnouncement.get("Announce"));
         imageViewHtmlDocument = root.findViewById(R.id.image_view);
-        Picasso.get().load(saveAnnouncement.get("Picture")).into(imageViewHtmlDocument);
+        loadUri();
 
 
         sermonBtn = root.findViewById(R.id.sermonBtn);
@@ -123,52 +119,68 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    public void loadAnnouncement() {
-        SharedPreferences pSharedPref = getContext().getSharedPreferences("announcement", Context.MODE_PRIVATE);
-        builder = new StringBuilder();
+    public void loadUri() {
+        SharedPreferences pSharedPref = getContext().getSharedPreferences("mainPage", Context.MODE_PRIVATE);
         try {
             if (pSharedPref != null) {
-                String jsonString = pSharedPref.getString("announce_home", (new JSONObject()).toString());
+                String jsonString = pSharedPref.getString("Track_mainPage", (new JSONObject()).toString());
                 JSONObject jsonObject = new JSONObject(jsonString);
                 Iterator<String> keysItr = jsonObject.keys();
                 while (keysItr.hasNext()) {
                     String key = keysItr.next();
                     String value = (String) jsonObject.get(key);
-                    saveAnnouncement.put(key, value);
+                    uriList.put(key, value);
                 }
+
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            StorageReference islandRef = FirebaseStorage.getInstance().getReference().child("main_pic.jpg");
+                            final long ONE_MEGABYTE = 1024 * 1024;
+                            islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                                @Override
+                                public void onSuccess(byte[] bytes) {
+                                    // Data for "images/island.jpg" is returns, use this as needed
+                                    Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+
+                                    imageViewHtmlDocument.setImageBitmap(Bitmap.createScaledBitmap(bmp, imageViewHtmlDocument.getWidth(),
+                                            imageViewHtmlDocument.getHeight(), false));
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception exception) {
+                                    // Handle any errors
+                                }
+                            });
+
+                            URL url = new URL(uriList.get("homepage"));
+                            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+                            String inputLine;
+                            returnUri = "";
+                            while ((inputLine = in.readLine()) != null)
+                                returnUri += inputLine + "\n";
+                            in.close();
+                            textViewHtmlDocument.setText(returnUri);
+
+                            URL url2 = new URL(uriList.get("youtube"));
+                            BufferedReader in2 = new BufferedReader(new InputStreamReader(url2.openStream()));
+                            String inputLine2;
+                            returnUri2 = "";
+                            while ((inputLine2 = in2.readLine()) != null)
+                                returnUri2 += inputLine2;
+                            in2.close();
+
+                            tempID = returnUri2.split("=", 2)[1];
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                Thread.currentThread().getPriority();
+                thread.start();
             }
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            try {
-                Document doc = Jsoup.connect(url).get();
-                Elements title = doc.select("div.sboard_cont_details > p"); //parent > child: child elements that descend directly from parent, e.g.
-
-                for (Element e : title) {
-                    if (e.text().contains("http")) {
-                        tempURL = e.text();
-                        splitYoutube = tempURL.split("=", 2);
-                        tempID = splitYoutube[1];
-                    }
-
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
         }
     }
 

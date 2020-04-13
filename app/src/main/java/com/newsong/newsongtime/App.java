@@ -6,11 +6,12 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.Settings;
-import android.util.Log;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,16 +22,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class App extends Application {
@@ -163,14 +156,13 @@ public class App extends Application {
         put("28", false);
         put("29", false);
     }};
-    Map<String, String> saveAnnouncement = new HashMap<String, String>();
-    private static final String url = "http://www.newsongdallas.org/tong/s_board/read.asp?board_seq=28&board_sub_seq=1&view_sub_seq=0&seq=2562&lef=&sublef=&page=1&search_select=&search_text=";
-    String getUrl;
-    String htmlContentInStringFormat;
-    StringBuilder builder;
-    String tempURL = "";
-    String[] splitYoutube;
-    String tempID;
+    Map<String, String> uriList = new HashMap<String, String>();
+    StorageReference storageReference;
+    StorageReference homepageReference;
+    StorageReference pictureReference;
+    StorageReference youtubeReference;
+    FirebaseStorage storage;
+    String uriConvert;
 
     @Override
     public void onCreate() {
@@ -183,62 +175,57 @@ public class App extends Application {
 
         createListenerFor12Months();
 
-        builder = new StringBuilder();
-        JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
-        jsoupAsyncTask.execute();
+        createListenerForAnnouncementAndPicture();
     }
 
+    private void createListenerForAnnouncementAndPicture() {
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
-    private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
+        homepageReference = storageReference.child("homepage.txt");
+        homepageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                uriConvert = uri.toString();
+                uriList.put("homepage", uriConvert);
+                saveUri(uriList);
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            try {
-                Document doc = Jsoup.connect(url).get();
-                Elements title = doc.select("div.sboard_cont_details > p"); //parent > child: child elements that descend directly from parent, e.g.
-                Elements imagefile = doc.select("div.sboard_cont_details img[src]"); //parent > child: child elements that descend directly from parent, e.g.
-                for (Element e : title) {
-                    if (e.text().contains("http")) {
-                        tempURL = e.text();
-                        splitYoutube = tempURL.split("=", 2);
-                        tempID = splitYoutube[1];
-                    } else {
-                        builder.append(e.text()).append("\n");
-                    }
-                }
-                for (Element e1 : imagefile) {
-                    getUrl = e1.absUrl("src");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-            return null;
-        }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+            }
+        });
 
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            htmlContentInStringFormat = builder.toString();
-            saveAnnouncement.put("Announce", htmlContentInStringFormat);
-            saveAnnouncement.put("Picture", getUrl);
-            saveAnnouncement(saveAnnouncement);
-        }
-    }
+        youtubeReference = storageReference.child("youtube.txt");
+        youtubeReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                uriConvert = uri.toString();
+                uriList.put("youtube", uriConvert);
+                saveUri(uriList);
 
-    public void saveAnnouncement(Map<String, String> inputMap) {
-        SharedPreferences pSharedPref = getSharedPreferences("announcement", Context.MODE_PRIVATE);
-        if (pSharedPref != null) {
-            JSONObject jsonObject = new JSONObject(inputMap);
-            String jsonString = jsonObject.toString();
-            SharedPreferences.Editor editor = pSharedPref.edit();
-            editor.remove("announce_home").commit();
-            editor.putString("announce_home", jsonString);
-            editor.commit();
-        }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+            }
+        });
+
+        pictureReference = storageReference.child("main_pic.jpg");
+        pictureReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                uriConvert = uri.toString();
+                uriList.put("picture", uriConvert);
+                saveUri(uriList);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+            }
+        });
     }
 
     private void createNotificationChannels() {
@@ -553,4 +540,15 @@ public class App extends Application {
         }
     }
 
+    public void saveUri(Map<String, String> inputMap) {
+        SharedPreferences pSharedPref = getApplicationContext().getSharedPreferences("mainPage", Context.MODE_PRIVATE);
+        if (pSharedPref != null) {
+            JSONObject jsonObject = new JSONObject(inputMap);
+            String jsonString = jsonObject.toString();
+            SharedPreferences.Editor editor = pSharedPref.edit();
+            editor.remove("Track_mainPage").commit();
+            editor.putString("Track_mainPage", jsonString);
+            editor.commit();
+        }
+    }
 }

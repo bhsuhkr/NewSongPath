@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,7 +48,6 @@ public class SplashActivity extends AppCompatActivity {
             public void onSuccess(Uri uri) {
                 uriConvert = uri.toString();
                 uriList.put("saving", uriConvert);
-                Log.d("Saving: ", uriConvert);
                 saveUri(uriList);
 
             }
@@ -66,7 +64,6 @@ public class SplashActivity extends AppCompatActivity {
             public void onSuccess(Uri uri) {
                 uriConvert = uri.toString();
                 uriList.put("serving", uriConvert);
-                Log.d("Serving: ", uriConvert);
                 saveUri(uriList);
 
             }
@@ -83,7 +80,6 @@ public class SplashActivity extends AppCompatActivity {
             public void onSuccess(Uri uri) {
                 uriConvert = uri.toString();
                 uriList.put("sending", uriConvert);
-                Log.d("Sending: ", uriConvert);
                 saveUri(uriList);
 
             }
@@ -92,7 +88,6 @@ public class SplashActivity extends AppCompatActivity {
             public void onFailure(@NonNull Exception exception) {
             }
         });
-
 
         startActivity(new Intent(this, MainActivity.class));
         finish();
