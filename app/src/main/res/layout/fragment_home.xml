@@ -53,7 +53,7 @@
             <TextView
                 android:id="@+id/text_home"
                 android:layout_width="match_parent"
-                android:layout_height="270dp"
+                android:layout_height="200dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="2dp"
@@ -76,7 +76,7 @@
             <ImageView
                 android:id="@+id/image_view"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="250dp"
                 android:contentDescription="@string/parsingImage" />
 
             <Space
@@ -86,11 +86,10 @@
             <Button
                 android:id="@+id/familyBtn"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="150dp"
                 android:layout_weight="1"
                 android:background="@drawable/family"
                 android:fontFamily="@font/sangsang"
-                android:text="뉴송 굿 뉴스\n가정예배 안내지"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp" />

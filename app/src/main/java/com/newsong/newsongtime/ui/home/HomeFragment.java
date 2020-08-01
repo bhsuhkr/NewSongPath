@@ -40,7 +40,7 @@ import java.util.Map;
 public class HomeFragment extends Fragment {
 
     private static final String homepageURL = "http://www.newsongdallas.org/";
-    private static final String familyURL = "https://url.kr/NlTV9c";
+    private static final String familyURL = "http://bitly.kr/ajT2hbvW3NE";
     private HomeViewModel homeViewModel;
     private TextView textViewHtmlDocument;
     private ImageView imageViewHtmlDocument;
