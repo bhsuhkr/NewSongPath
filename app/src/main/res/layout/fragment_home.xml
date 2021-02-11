@@ -76,12 +76,23 @@
             <ImageView
                 android:id="@+id/image_view"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="200dp"
                 android:contentDescription="@string/parsingImage" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp" />
+
+            <Button
+                android:id="@+id/offering"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:background="@drawable/offering"
+                android:fontFamily="@font/sangsang"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/familyBtn"

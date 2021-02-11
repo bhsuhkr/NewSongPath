@@ -40,11 +40,12 @@ import java.util.Map;
 public class HomeFragment extends Fragment {
 
     private static final String homepageURL = "http://www.newsongdallas.org/";
-    private static final String familyURL = "http://bitly.kr/ajT2hbvW3NE";
+    private static final String familyURL = "https://bit.ly/3jJRu6W";
+    private static final String offeringUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfK6_5b4jr_f-2Ud6l1VCyx2To0ubIF8HG1HqTkfu3mSvy2pA/viewform";
     private HomeViewModel homeViewModel;
     private TextView textViewHtmlDocument;
     private ImageView imageViewHtmlDocument;
-    private Button sermonBtn, homepageBtn, outreachBtn, jooboBtn, trackBtn, familyBtn;
+    private Button sermonBtn, homepageBtn, outreachBtn, jooboBtn, trackBtn, familyBtn, offeringBtn;
     Map<String, String> uriList = new HashMap<String, String>();
     String tempID;
     String returnUri;
@@ -68,6 +69,15 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), SermonActivity.class);
                 intent.putExtra("YoutubeLink", tempID);
+                startActivity(intent);
+            }
+        });
+
+        offeringBtn = root.findViewById(R.id.offering);
+        offeringBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(offeringUrl));
                 startActivity(intent);
             }
         });
