@@ -37,12 +37,12 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        currentDateWithYear = new SimpleDateFormat("MM_dd_yyyy", Locale.getDefault()).format(new Date());
+        currentDateWithYear = new SimpleDateFormat("MM_dd", Locale.getDefault()).format(new Date());
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-
-        savingReference = storageReference.child(currentDateWithYear + "_saving.txt");
+        
+        savingReference = storageReference.child(currentDateWithYear + "_2020_saving.txt");
         savingReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
